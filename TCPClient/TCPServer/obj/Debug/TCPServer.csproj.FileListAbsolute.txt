@@ -1,0 +1,12 @@
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\bin\Debug\TCPServer.exe.config
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\bin\Debug\TCPServer.exe
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\bin\Debug\TCPServer.pdb
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\bin\Debug\SuperSimpleTcp.dll
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.csproj.AssemblyReference.cache
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\tcp.server.Server.resources
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.Properties.Resources.resources
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.csproj.GenerateResource.cache
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.csproj.CoreCompileInputs.cache
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.csproj.Up2Date
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.exe
+C:\Users\DUC DUNG\source\repos\TCPClient\TCPServer\obj\Debug\TCPServer.pdb
