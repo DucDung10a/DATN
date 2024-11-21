@@ -1,0 +1,4 @@
+vhdl xil_defaultlib  \
+"../../../../FFT_final.gen/sources_1/ip/dds_compiler_2/sim/dds_compiler_2.vhd" \
+
+nosort

@@ -1,0 +1,12 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/dds_compiler_0/sim/dds_compiler_0.vhd,1730707581,vhdl,,,,dds_compiler_0,,,,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/dds_compiler_1/sim/dds_compiler_1.vhd,1730707757,vhdl,,,,dds_compiler_1,,,,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/dds_compiler_2/sim/dds_compiler_2.vhd,1730707823,vhdl,,,,dds_compiler_2,,,,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/xfft_0/sim/xfft_0.vhd,1730708034,vhdl,,,,xfft_0,,,,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,axi_vip_v1_1_13;processing_system7_vip_v1_0_15;xilinx_vip,,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/DDS_FFT.v,1730706808,verilog,,,,DDS_FFT,,axi_vip_v1_1_13;processing_system7_vip_v1_0_15;xilinx_vip,../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ec67/hdl;../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ee60/hdl;C:/Xilinx/Vivado/2022.2/data/xilinx_vip/include,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/DDS_IP.v,1730882164,verilog,,D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/FFT_control.v,,dds_0;dds_1;dds_2,,axi_vip_v1_1_13;processing_system7_vip_v1_0_15;xilinx_vip,../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ec67/hdl;../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ee60/hdl;C:/Xilinx/Vivado/2022.2/data/xilinx_vip/include,,,,,
+D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/FFT_control.v,1730882321,verilog,,D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/DDS_FFT.v,,FFT_control,,axi_vip_v1_1_13;processing_system7_vip_v1_0_15;xilinx_vip,../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ec67/hdl;../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ee60/hdl;C:/Xilinx/Vivado/2022.2/data/xilinx_vip/include,,,,,

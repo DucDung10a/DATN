@@ -1,0 +1,141 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Wed Nov  6 16:27:28 2024
+| Host         : DESKTOP-GLV9KF3 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file DDS_FFT_ethernet_final_wrapper_methodology_drc_routed.rpt -pb DDS_FFT_ethernet_final_wrapper_methodology_drc_routed.pb -rpx DDS_FFT_ethernet_final_wrapper_methodology_drc_routed.rpx
+| Design       : DDS_FFT_ethernet_final_wrapper
+| Device       : xc7z020clg400-2
+| Speed File   : -2
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 21
++-----------+----------+-------------------------------------------------+------------+
+| Rule      | Severity | Description                                     | Violations |
++-----------+----------+-------------------------------------------------+------------+
+| PDRC-190  | Warning  | Suboptimally placed synchronized register chain | 10         |
+| TIMING-16 | Warning  | Large setup violation                           | 11         |
++-----------+----------+-------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+PDRC-190#1 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[0] in site SLICE_X39Y115 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#2 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[1] in site SLICE_X41Y115 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#3 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[2] in site SLICE_X44Y115 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#4 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[3] in site SLICE_X43Y116 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#5 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[0] in site SLICE_X42Y114 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#6 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[1] in site SLICE_X41Y113 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#7 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[2] in site SLICE_X40Y114 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#8 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[0] in site SLICE_X38Y112 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#9 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[1] in site SLICE_X39Y112 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#10 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[2] in site SLICE_X37Y112 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.006 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_512_767_51_51/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.011 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_768_1023_44_44/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.016 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_512_767_44_44/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.018 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_256_511_45_45/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -1.024 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_0_255_51_51/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -1.040 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_0_255_52_52/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -1.047 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_768_1023_49_49/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -1.057 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_256_511_49_49/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -1.064 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_768_1023_50_50/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -1.076 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_512_767_49_49/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -1.104 ns between DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/u_fft/U0/i_synth/axi_wrapper/data_out_channel/gen_non_real_time.fifo/fifo0/fifo_2_reg[24]/C (clocked by clk_fpga_0) and DDS_FFT_ethernet_final_i/DDS_FFT_0/inst/dut/psd_array_reg_0_255_49_49/RAMS64E_A/I (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+

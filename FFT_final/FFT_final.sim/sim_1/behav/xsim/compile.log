@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/DDS_IP.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dds_0
+INFO: [VRFC 10-311] analyzing module dds_1
+INFO: [VRFC 10-311] analyzing module dds_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/FFT_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FFT_control
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/new/DDS_FFT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DDS_FFT
