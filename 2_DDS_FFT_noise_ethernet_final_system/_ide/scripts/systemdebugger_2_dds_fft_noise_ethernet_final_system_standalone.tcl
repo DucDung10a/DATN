@@ -25,5 +25,4 @@ ps7_post_config
 targets -set -nocase -filter {name =~ "*A9*#0"}
 dow D:/Vivado/_lab_vitis2022.2/2_DDS_FFT_noise_ethernet_final/Debug/2_DDS_FFT_noise_ethernet_final.elf
 configparams force-mem-access 0
-targets -set -nocase -filter {name =~ "*A9*#0"}
-con
+bpadd -addr &main

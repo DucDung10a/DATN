@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="3_FFT_update" location="D:/Vivado/_lab_vitis2022.2/3_FFT_update" platform="D:/Vivado/_lab_vitis2022.2/3_FFT_update_wrapper/export/3_FFT_update_wrapper/3_FFT_update_wrapper.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="3_FFT_update_system" sysConfig="3_FFT_update_wrapper" runtime="cpp" cpu="freertos10_xilinx_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="freertos10_xilinx" mssSignature="89afeb8574ad3749bc6b41baa30b03ca">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.2058521127">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1262352043" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="freertos_lwip_tcp_perf_server" hasBspSettings="true"/>
+</sdkproject:SdkProject>

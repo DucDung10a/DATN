@@ -162,7 +162,7 @@ void tcp_read_task(void *p)
         u32 phase_incr0 = (uint)(recv_buf[0]*2621.44);
         u32 phase_incr1 = (uint)(recv_buf[1]*2621.44);
         u32 phase_incr2 = (uint)(recv_buf[2]*2621.44);
-
+        u8 pos_radar = (uint)(recv_buf[3]);
         xil_printf("Data0: %d \n\r", phase_incr0);
         xil_printf("Data1: %d \n\r", phase_incr1);
         xil_printf("Data2: %d \n\r", phase_incr2);
@@ -173,11 +173,11 @@ void tcp_read_task(void *p)
             break;
         }
 
-        Xil_Out32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG4_OFFSET, phase_incr0);
+        Xil_Out32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG4_OFFSET, phase_incr0 | (pos_radar << 24));
         Xil_Out32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG5_OFFSET, phase_incr1);
         Xil_Out32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG6_OFFSET, phase_incr2);
 
-        vTaskDelay(pdMS_TO_TICKS(20));
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 
     close(sock);
@@ -189,28 +189,27 @@ void tcp_write_task(void *p)
 {
     int sock = *((int *)p);
     u16 pos_sample_psd;
-    uint64_t  psd_avg ;
+    uint64_t psd_avg [1024];
 
     while (1) {
-        psd_avg = 0;
+//        psd_avg = 0;
         pos_sample_psd = 0;
-
+//        for (int i = 0; i < 1024; i++) {
+//            psd_avg[i] = 0;
+//        }
         while ((Xil_In32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG1_OFFSET)) != 0x03) {};
         while (pos_sample_psd < 1024) {
-        	pos_sample_psd++;
-
-            psd_avg = (u64)pos_sample_psd << 48 |
+            psd_avg[pos_sample_psd] = (u64)pos_sample_psd << 48 |
             		  ((u64)Xil_In32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG3_OFFSET) << 32) |
             		  ((u64)Xil_In32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG2_OFFSET) << 0) ;
-
+            pos_sample_psd++;
             Xil_Out32(XPAR_MYFFT_0_S00_AXI_BASEADDR + MYFFT_S00_AXI_SLV_REG0_OFFSET, pos_sample_psd);
-            if (lwip_send(sock, &psd_avg, 8 , 0) < 0) {
-                xil_printf("Error sending data to client\n\r");
-                break;
-            }
         }
-
-        vTaskDelay(pdMS_TO_TICKS(2000));
+        if (lwip_send(sock, psd_avg, sizeof(psd_avg) , 0) < 0) {
+        	xil_printf("Error sending data to client\n\r");
+        	break;
+        }
+        vTaskDelay(pdMS_TO_TICKS(200));
     }
 
     close(sock);
