@@ -32,10 +32,10 @@ namespace client
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -52,6 +52,7 @@ namespace client
             this.radarChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.cboRadar = new System.Windows.Forms.ComboBox();
+            this.autoBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.fftChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radarChart)).BeginInit();
             this.SuspendLayout();
@@ -107,25 +108,25 @@ namespace client
             // fftChart
             // 
             this.fftChart.BackColor = System.Drawing.SystemColors.ControlDark;
-            chartArea1.AxisX.Interval = 10D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.Maximum = 100D;
-            chartArea1.AxisX.Title = "Frequency [MHz]";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Maximum = 100D;
-            chartArea1.AxisY.Minimum = 28D;
-            chartArea1.AxisY.Title = "Amplitude [dB]";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.fftChart.ChartAreas.Add(chartArea1);
+            chartArea7.AxisX.Interval = 10D;
+            chartArea7.AxisX.Maximum = 100D;
+            chartArea7.AxisX.Minimum = 0D;
+            chartArea7.AxisX.Title = "Frequency [MHz]";
+            chartArea7.AxisX.TitleFont = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.AxisY.Maximum = 100D;
+            chartArea7.AxisY.Minimum = 28D;
+            chartArea7.AxisY.Title = "Amplitude [dB]";
+            chartArea7.AxisY.TitleFont = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea7.Name = "ChartArea1";
+            this.fftChart.ChartAreas.Add(chartArea7);
             this.fftChart.Location = new System.Drawing.Point(12, 12);
             this.fftChart.Name = "fftChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "fftSeries";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.fftChart.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Name = "fftSeries";
+            series7.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
+            series7.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.fftChart.Series.Add(series7);
             this.fftChart.Size = new System.Drawing.Size(754, 626);
             this.fftChart.TabIndex = 7;
             this.fftChart.Text = "fftChart";
@@ -147,7 +148,7 @@ namespace client
             this.txtFreq1.Name = "txtFreq1";
             this.txtFreq1.Size = new System.Drawing.Size(100, 22);
             this.txtFreq1.TabIndex = 9;
-            this.txtFreq1.Text = "10";
+            this.txtFreq1.Text = "41";
             // 
             // label3
             // 
@@ -164,7 +165,7 @@ namespace client
             this.txtFreq2.Name = "txtFreq2";
             this.txtFreq2.Size = new System.Drawing.Size(100, 22);
             this.txtFreq2.TabIndex = 9;
-            this.txtFreq2.Text = "22";
+            this.txtFreq2.Text = "5";
             // 
             // label4
             // 
@@ -181,7 +182,7 @@ namespace client
             this.txtFreq3.Name = "txtFreq3";
             this.txtFreq3.Size = new System.Drawing.Size(100, 22);
             this.txtFreq3.TabIndex = 9;
-            this.txtFreq3.Text = "33";
+            this.txtFreq3.Text = "15";
             // 
             // label5
             // 
@@ -194,14 +195,14 @@ namespace client
             // 
             // radarChart
             // 
-            chartArea2.Name = "RadarArea";
-            this.radarChart.ChartAreas.Add(chartArea2);
+            chartArea8.Name = "RadarArea";
+            this.radarChart.ChartAreas.Add(chartArea8);
             this.radarChart.Location = new System.Drawing.Point(900, 238);
             this.radarChart.Name = "radarChart";
-            series2.ChartArea = "RadarArea";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Radar;
-            series2.Name = "RadarSeries";
-            this.radarChart.Series.Add(series2);
+            series8.ChartArea = "RadarArea";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Radar;
+            series8.Name = "RadarSeries";
+            this.radarChart.Series.Add(series8);
             this.radarChart.Size = new System.Drawing.Size(408, 400);
             this.radarChart.TabIndex = 8;
             this.radarChart.Text = "radarChart";
@@ -213,32 +214,47 @@ namespace client
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Radar (1-8)";
+            this.label2.Text = "Radar (0-7)";
             // 
             // cboRadar
             // 
+            this.cboRadar.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
             this.cboRadar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRadar.FormattingEnabled = true;
             this.cboRadar.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
             "4",
             "5",
             "6",
-            "7",
-            "8"});
+            "7"});
             this.cboRadar.Location = new System.Drawing.Point(771, 434);
             this.cboRadar.Name = "cboRadar";
+            this.cboRadar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cboRadar.Size = new System.Drawing.Size(121, 24);
-            this.cboRadar.TabIndex = 0;
+            this.cboRadar.TabIndex = 1;
+            this.cboRadar.Tag = "";
             this.cboRadar.SelectedIndexChanged += new System.EventHandler(this.cboRadar_SelectedIndexChanged);
+            // 
+            // autoBox
+            // 
+            this.autoBox.AutoSize = true;
+            this.autoBox.Location = new System.Drawing.Point(802, 392);
+            this.autoBox.Name = "autoBox";
+            this.autoBox.Size = new System.Drawing.Size(56, 20);
+            this.autoBox.TabIndex = 14;
+            this.autoBox.Text = "Auto";
+            this.autoBox.UseVisualStyleBackColor = true;
+            this.autoBox.CheckedChanged += new System.EventHandler(this.autoBox_CheckedChanged);
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1320, 650);
+            this.Controls.Add(this.autoBox);
             this.Controls.Add(this.cboRadar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.radarChart);
@@ -271,5 +287,6 @@ namespace client
         private Chart radarChart;
         private Label label2;
         private ComboBox cboRadar;
+        private CheckBox autoBox;
     }
 }
