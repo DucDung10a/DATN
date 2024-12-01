@@ -91,7 +91,7 @@ set_property ip_output_repo d:/Vivado/_DATN/FFT/FFT_final/FFT_final.cache/ip [cu
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/DDS_FFT_ethernet_final_ila_0_0.xci
+read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/DDS_FFT_ethernet_final_ila_0_0.xci
 set_property used_in_synthesis false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/ila_v6_2/constraints/ila.xdc]

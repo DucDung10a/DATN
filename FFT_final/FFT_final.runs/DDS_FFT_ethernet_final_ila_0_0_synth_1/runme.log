@@ -10,7 +10,7 @@
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source DDS_FFT_ethernet_final_ila_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:15 . Memory (MB): peak = 387.570 ; gain = 58.348
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:17 . Memory (MB): peak = 388.551 ; gain = 65.832
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Vivado/_DATN/FFT/ip_repo/myFFT_1_0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
@@ -22,7 +22,7 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 19284
+INFO: [Synth 8-7075] Helper process launched with PID 319136
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 INFO: [Synth 8-11241] undeclared symbol 'rddata_rst_i', assumed default net type 'wire' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/b205/hdl/xsdbm_v3_0_vl_rfs.v:2188]
 INFO: [Synth 8-11241] undeclared symbol 'datard_overflow', assumed default net type 'wire' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/b205/hdl/xsdbm_v3_0_vl_rfs.v:2235]
@@ -135,7 +135,7 @@ WARNING: [Synth 8-10294] parameter declaration is not allowed here in this mode 
 WARNING: [Synth 8-10294] parameter declaration is not allowed here in this mode of Verilog [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/fd26/hdl/ila_v6_2_syn_rfs.v:4588]
 WARNING: [Synth 8-10294] parameter declaration is not allowed here in this mode of Verilog [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/fd26/hdl/ila_v6_2_syn_rfs.v:5486]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:22 ; elapsed = 00:00:43 . Memory (MB): peak = 1272.078 ; gain = 418.922
+Starting RTL Elaboration : Time (s): cpu = 00:00:34 ; elapsed = 00:00:54 . Memory (MB): peak = 1272.836 ; gain = 419.414
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'DDS_FFT_ethernet_final_ila_0_0' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:48]
 INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:1534]
@@ -150,16 +150,19 @@ INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [C:/Xilinx/Vivado/2022.2/scri
 INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (0#1) [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:131733]
 INFO: [Synth 8-6157] synthesizing module 'FDRE' [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:38708]
 INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:38708]
-WARNING: [Synth 8-7071] port 'clk_nobuf' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
-WARNING: [Synth 8-7071] port 'clkdiv_out' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
-WARNING: [Synth 8-7071] port 'trig_in' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
-WARNING: [Synth 8-7071] port 'trig_in_ack' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
-WARNING: [Synth 8-7071] port 'trig_out' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
-WARNING: [Synth 8-7071] port 'trig_out_ack' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
-WARNING: [Synth 8-7023] instance 'inst' of module 'ila_v6_2_12_ila' has 1033 connections declared, but only 1027 given [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3219]
+WARNING: [Synth 8-7071] port 'clk_nobuf' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
+WARNING: [Synth 8-7071] port 'clkdiv_out' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
+WARNING: [Synth 8-7071] port 'trig_in' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
+WARNING: [Synth 8-7071] port 'trig_in_ack' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
+WARNING: [Synth 8-7071] port 'trig_out' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
+WARNING: [Synth 8-7071] port 'trig_out_ack' of module 'ila_v6_2_12_ila' is unconnected for instance 'inst' [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
+WARNING: [Synth 8-7023] instance 'inst' of module 'ila_v6_2_12_ila' has 1033 connections declared, but only 1027 given [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:3221]
 INFO: [Synth 8-6155] done synthesizing module 'DDS_FFT_ethernet_final_ila_0_0' (0#1) [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:48]
-WARNING: [Synth 8-3848] Net sl_iport0 in module/entity DDS_FFT_ethernet_final_ila_0_0 does not have driver. [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:108]
+WARNING: [Synth 8-3848] Net sl_iport0 in module/entity DDS_FFT_ethernet_final_ila_0_0 does not have driver. [d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/synth/DDS_FFT_ethernet_final_ila_0_0.v:110]
 WARNING: [Synth 8-7129] Port CLKB in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[116] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[115] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DOUTA_I[114] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[113] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[112] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[111] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
@@ -256,24 +259,21 @@ WARNING: [Synth 8-7129] Port DOUTA_I[21] in module blk_mem_gen_v8_4_5_blk_mem_ou
 WARNING: [Synth 8-7129] Port DOUTA_I[20] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[19] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTA_I[18] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[17] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[16] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DOUTA_I[15] in module blk_mem_gen_v8_4_5_blk_mem_output_block is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:24 ; elapsed = 00:02:26 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished RTL Elaboration : Time (s): cpu = 00:01:22 ; elapsed = 00:02:35 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:24 ; elapsed = 00:02:26 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:22 ; elapsed = 00:02:35 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:24 ; elapsed = 00:02:26 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:22 ; elapsed = 00:02:35 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.259 . Memory (MB): peak = 1768.180 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 149 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.222 . Memory (MB): peak = 1772.594 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 156 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -287,30 +287,30 @@ Parsing XDC File [D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/DDS_FFT_ethernet_
 Finished Parsing XDC File [D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/DDS_FFT_ethernet_final_ila_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1768.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1772.594 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 110 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 100 instances
-  CFGLUT5 => SRLC32E: 10 instances
+  A total of 115 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 104 instances
+  CFGLUT5 => SRLC32E: 11 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.335 . Memory (MB): peak = 1768.180 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.297 . Memory (MB): peak = 1772.594 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:38 ; elapsed = 00:02:53 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Constraint Validation : Time (s): cpu = 00:01:29 ; elapsed = 00:03:00 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:38 ; elapsed = 00:02:53 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:29 ; elapsed = 00:03:00 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/DDS_FFT_ethernet_final_ila_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:38 ; elapsed = 00:02:54 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:29 ; elapsed = 00:03:01 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized0'
@@ -320,6 +320,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in modul
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized4'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized5'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized6'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized7'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'ltlib_v1_0_0_generic_memrd'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -405,6 +406,16 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
 *
+                    IDLE |                             0001 |                             0001
+                     REG |                             0010 |                             0010
+                     P2S |                             0100 |                             0100
+                     S2P |                             1000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized7'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
               RESET_ADDR |                          0000001 |                          0000001
             REQUEST_READ |                          0000010 |                          0000010
            WAIT_READ_ACK |                          0000100 |                          0000100
@@ -415,7 +426,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'ltlib_v1_0_0_generic_memrd'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:41 ; elapsed = 00:02:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:31 ; elapsed = 00:03:06 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -437,25 +448,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:56 ; elapsed = 00:03:28 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:41 ; elapsed = 00:03:38 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:06 ; elapsed = 00:03:44 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:45 ; elapsed = 00:03:53 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:06 ; elapsed = 00:03:45 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Timing Optimization : Time (s): cpu = 00:01:45 ; elapsed = 00:03:54 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:08 ; elapsed = 00:03:48 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Technology Mapping : Time (s): cpu = 00:01:46 ; elapsed = 00:03:56 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -513,37 +524,37 @@ INFO: [Synth 8-3295] tying undriven pin inst:sl_iport0[0] to constant 0
 INFO: [Synth 8-3295] tying undriven pin inst:trig_in to constant 0
 INFO: [Synth 8-3295] tying undriven pin inst:trig_out_ack to constant 0
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:14 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished IO Insertion : Time (s): cpu = 00:01:49 ; elapsed = 00:04:06 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:14 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:49 ; elapsed = 00:04:06 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:14 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:49 ; elapsed = 00:04:06 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:14 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:49 ; elapsed = 00:04:06 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:15 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:49 ; elapsed = 00:04:07 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:15 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:49 ; elapsed = 00:04:07 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -559,49 +570,49 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |CARRY4   |    35|
-|2     |CFGLUT5  |   110|
+|1     |CARRY4   |    37|
+|2     |CFGLUT5  |   115|
 |3     |LUT1     |    34|
-|4     |LUT2     |   138|
-|5     |LUT3     |   104|
-|6     |LUT4     |   116|
-|7     |LUT5     |   129|
-|8     |LUT6     |   479|
+|4     |LUT2     |   143|
+|5     |LUT3     |   108|
+|6     |LUT4     |   128|
+|7     |LUT5     |   109|
+|8     |LUT6     |   521|
 |9     |MUXF7    |    19|
 |10    |RAMB18E1 |     1|
 |11    |RAMB36E1 |     3|
-|12    |SRL16E   |   117|
+|12    |SRL16E   |   120|
 |13    |SRLC16E  |     2|
 |14    |SRLC32E  |    17|
-|15    |FDRE     |  1752|
+|15    |FDRE     |  1810|
 |16    |FDSE     |    10|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:15 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:49 ; elapsed = 00:04:07 . Memory (MB): peak = 1772.594 ; gain = 919.172
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 2943 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:03:48 . Memory (MB): peak = 1768.180 ; gain = 915.023
-Synthesis Optimization Complete : Time (s): cpu = 00:02:15 ; elapsed = 00:03:59 . Memory (MB): peak = 1768.180 ; gain = 915.023
+Synthesis finished with 0 errors, 0 critical warnings and 3011 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:03:56 . Memory (MB): peak = 1772.594 ; gain = 919.172
+Synthesis Optimization Complete : Time (s): cpu = 00:01:49 ; elapsed = 00:04:07 . Memory (MB): peak = 1772.594 ; gain = 919.172
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.113 . Memory (MB): peak = 1768.180 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 168 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.138 . Memory (MB): peak = 1772.594 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 175 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1768.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1772.594 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 110 instances were transformed.
-  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 100 instances
-  CFGLUT5 => SRLC32E: 10 instances
+  A total of 115 instances were transformed.
+  CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 104 instances
+  CFGLUT5 => SRLC32E: 11 instances
 
-Synth Design complete, checksum: d78a87b6
+Synth Design complete, checksum: 93372131
 INFO: [Common 17-83] Releasing license: Synthesis
-195 Infos, 119 Warnings, 0 Critical Warnings and 0 Errors encountered.
+197 Infos, 119 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:23 ; elapsed = 00:04:18 . Memory (MB): peak = 1768.180 ; gain = 1316.613
+synth_design: Time (s): cpu = 00:01:59 ; elapsed = 00:04:28 . Memory (MB): peak = 1772.594 ; gain = 1322.117
 INFO: [Common 17-1381] The checkpoint 'D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/DDS_FFT_ethernet_final_ila_0_0_synth_1/DDS_FFT_ethernet_final_ila_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP DDS_FFT_ethernet_final_ila_0_0, cache-ID = 8900c6c54abf0dd9
-INFO: [Coretcl 2-1174] Renamed 146 cell refs.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP DDS_FFT_ethernet_final_ila_0_0, cache-ID = 32095644ac931795
+INFO: [Coretcl 2-1174] Renamed 151 cell refs.
 INFO: [Common 17-1381] The checkpoint 'D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/DDS_FFT_ethernet_final_ila_0_0_synth_1/DDS_FFT_ethernet_final_ila_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file DDS_FFT_ethernet_final_ila_0_0_utilization_synth.rpt -pb DDS_FFT_ethernet_final_ila_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Nov  4 15:45:30 2024...
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 30 17:06:27 2024...

@@ -58,20 +58,20 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="2"/>
+    <Option Name="WTXSimLaunchSim" Val="4"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="4"/>
-    <Option Name="WTModelSimExportSim" Val="4"/>
-    <Option Name="WTQuestaExportSim" Val="4"/>
+    <Option Name="WTXSimExportSim" Val="5"/>
+    <Option Name="WTModelSimExportSim" Val="5"/>
+    <Option Name="WTQuestaExportSim" Val="5"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="4"/>
-    <Option Name="WTRivieraExportSim" Val="4"/>
-    <Option Name="WTActivehdlExportSim" Val="4"/>
+    <Option Name="WTVcsExportSim" Val="5"/>
+    <Option Name="WTRivieraExportSim" Val="5"/>
+    <Option Name="WTActivehdlExportSim" Val="5"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -116,17 +116,20 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_processing_system7_0_0/DDS_FFT_ethernet_final_processing_system7_0_0.xci">
-          <Proxy FileSetName="DDS_FFT_ethernet_final_processing_system7_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_myFFT_0_0/DDS_FFT_ethernet_final_myFFT_0_0.xci">
-          <Proxy FileSetName="DDS_FFT_ethernet_final_myFFT_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0.xci">
           <Proxy FileSetName="DDS_FFT_ethernet_final_rst_ps7_0_100M_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0.xci">
+          <Proxy FileSetName="DDS_FFT_ethernet_final_DDS_FFT_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_ila_0_0/DDS_FFT_ethernet_final_ila_0_0.xci">
           <Proxy FileSetName="DDS_FFT_ethernet_final_ila_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_processing_system7_0_0/DDS_FFT_ethernet_final_processing_system7_0_0.xci">
+          <Proxy FileSetName="DDS_FFT_ethernet_final_processing_system7_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_myFFT_0_2/DDS_FFT_ethernet_final_myFFT_0_2.xci">
+          <Proxy FileSetName="DDS_FFT_ethernet_final_myFFT_0_2"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/DDS_FFT_ethernet_final/hdl/DDS_FFT_ethernet_final_wrapper.v">
@@ -149,12 +152,17 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/tb_DDS_FFT.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="DDS_FFT"/>
+        <Option Name="TopModule" Val="tb_DDS_FFT"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
-        <Option Name="TopRTLFile" Val="$PSRCDIR/sources_1/new/DDS_FFT.v"/>
-        <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SelectedSimModel" Val="rtl"/>
@@ -231,12 +239,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="DDS_FFT_ethernet_final_myFFT_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/DDS_FFT_ethernet_final_myFFT_0_0" RelGenDir="$PGENDIR/DDS_FFT_ethernet_final_myFFT_0_0">
-      <Config>
-        <Option Name="TopModule" Val="DDS_FFT_ethernet_final_myFFT_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="DDS_FFT_ethernet_final_rst_ps7_0_100M_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/DDS_FFT_ethernet_final_rst_ps7_0_100M_0" RelGenDir="$PGENDIR/DDS_FFT_ethernet_final_rst_ps7_0_100M_0">
       <Config>
         <Option Name="TopModule" Val="DDS_FFT_ethernet_final_rst_ps7_0_100M_0"/>
@@ -252,6 +254,18 @@
     <FileSet Name="DDS_FFT_ethernet_final_ila_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/DDS_FFT_ethernet_final_ila_0_0" RelGenDir="$PGENDIR/DDS_FFT_ethernet_final_ila_0_0">
       <Config>
         <Option Name="TopModule" Val="DDS_FFT_ethernet_final_ila_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="DDS_FFT_ethernet_final_myFFT_0_2" Type="BlockSrcs" RelSrcDir="$PSRCDIR/DDS_FFT_ethernet_final_myFFT_0_2" RelGenDir="$PGENDIR/DDS_FFT_ethernet_final_myFFT_0_2">
+      <Config>
+        <Option Name="TopModule" Val="DDS_FFT_ethernet_final_myFFT_0_2"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="DDS_FFT_ethernet_final_DDS_FFT_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/DDS_FFT_ethernet_final_DDS_FFT_0_0" RelGenDir="$PGENDIR/DDS_FFT_ethernet_final_DDS_FFT_0_0">
+      <Config>
+        <Option Name="TopModule" Val="DDS_FFT_ethernet_final_DDS_FFT_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -325,16 +339,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="DDS_FFT_ethernet_final_myFFT_0_0_synth_1" Type="Ft3:Synth" SrcSet="DDS_FFT_ethernet_final_myFFT_0_0" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_myFFT_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/DDS_FFT_ethernet_final_myFFT_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_0_synth_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2022"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="DDS_FFT_ethernet_final_rst_ps7_0_100M_0_synth_1" Type="Ft3:Synth" SrcSet="DDS_FFT_ethernet_final_rst_ps7_0_100M_0" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_rst_ps7_0_100M_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
@@ -358,6 +362,30 @@
     <Run Id="DDS_FFT_ethernet_final_ila_0_0_synth_1" Type="Ft3:Synth" SrcSet="DDS_FFT_ethernet_final_ila_0_0" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_ila_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/DDS_FFT_ethernet_final_ila_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_ila_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_ila_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2022"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="DDS_FFT_ethernet_final_myFFT_0_2_synth_1" Type="Ft3:Synth" SrcSet="DDS_FFT_ethernet_final_myFFT_0_2" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_myFFT_0_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/DDS_FFT_ethernet_final_myFFT_0_2_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2022"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="DDS_FFT_ethernet_final_DDS_FFT_0_0_synth_1" Type="Ft3:Synth" SrcSet="DDS_FFT_ethernet_final_DDS_FFT_0_0" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_DDS_FFT_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/DDS_FFT_ethernet_final_DDS_FFT_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_DDS_FFT_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_DDS_FFT_0_0_synth_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -451,23 +479,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="DDS_FFT_ethernet_final_myFFT_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_myFFT_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="DDS_FFT_ethernet_final_myFFT_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_0_impl_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2022"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="DDS_FFT_ethernet_final_rst_ps7_0_100M_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_rst_ps7_0_100M_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="DDS_FFT_ethernet_final_rst_ps7_0_100M_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
@@ -505,6 +516,44 @@
     <Run Id="DDS_FFT_ethernet_final_ila_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_ila_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="DDS_FFT_ethernet_final_ila_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_ila_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_ila_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2022"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="DDS_FFT_ethernet_final_myFFT_0_2_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_myFFT_0_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="DDS_FFT_ethernet_final_myFFT_0_2_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2022"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="DDS_FFT_ethernet_final_DDS_FFT_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_DDS_FFT_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="DDS_FFT_ethernet_final_DDS_FFT_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_DDS_FFT_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_DDS_FFT_0_0_impl_1">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

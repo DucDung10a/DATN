@@ -1,0 +1,13 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" --include "../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ec67/hdl" --include "../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/ee60/hdl" --include "../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/1b7e/hdl/verilog" --include "../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/122e/hdl/verilog" --include "../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/b205/hdl/verilog" --include "../../../../FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ipshared/fd26/hdl/verilog" \
+"../../../bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_processing_system7_0_0/sim/DDS_FFT_ethernet_final_processing_system7_0_0.v" \
+"../../../bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/sim/DDS_FFT_ethernet_final_ila_0_0.v" \
+"../../../bd/DDS_FFT_ethernet_final/ipshared/64e9/hdl/myFFT_v1_0_S00_AXI.v" \
+"../../../bd/DDS_FFT_ethernet_final/ipshared/64e9/hdl/myFFT_v1_0.v" \
+"../../../bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_myFFT_0_0/sim/DDS_FFT_ethernet_final_myFFT_0_0.v" \
+"../../../bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/sim/DDS_FFT_ethernet_final_DDS_FFT_0_0.v" \
+"../../../bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_auto_pc_0/sim/DDS_FFT_ethernet_final_auto_pc_0.v" \
+"../../../bd/DDS_FFT_ethernet_final/sim/DDS_FFT_ethernet_final.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

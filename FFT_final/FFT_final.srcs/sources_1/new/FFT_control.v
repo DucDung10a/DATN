@@ -1,35 +1,30 @@
-`timescale 1ns / 1ps
-//`define cnt_m 64
-//`define cnt_m_width 6
 `define cnt_m 8
 `define cnt_m_width 3
 module FFT_control
-//#(parameter num_FFT = 8)
 (
   input wire clk,
   input wire rst_n,
 
-  input wire [15:0] fft_s_data_i_re,
-  input wire [15:0] fft_s_data_q_im,
+  input wire signed [15:0] fft_s_data_i_re,
+  input wire signed [15:0] fft_s_data_q_im,
   input wire fft_s_data_tvalid,
   output wire fft_s_data_tready,
   output wire fft_m_data_tvalid,
   
   input wire fft_m_data_tready,
-
   input wire [9:0] cnt_read,
-  output wire m_valid,
+  output wire m_valid, //64 FFT dau ra
+//  output wire s_ready, //64 FFT dau vao
   output reg signed [47:0] psd_avg_read
   );
   wire fft_m_data_tlast;
   wire [9:0]  fft_m_data_tuser;
-  wire signed [46:0] psd_avg;
+  wire signed [47:0] psd_avg;
   
   wire [7:0] fft_s_config_tdata;
   wire fft_s_config_tvalid;
   wire fft_s_config_tready;
   
-//  reg fft_s_data_tvalid;
   reg [31:0] fft_s_data_tdata;
   wire fft_s_data_tlast;
   
@@ -37,11 +32,12 @@ module FFT_control
   wire [63:0] fft_m_data_tdata;
   
   reg [9:0] cnt_s;
-  reg [5:0] cnt_m_fft;
+  reg [6:0] cnt_m_fft;
+//  reg [5:0] cnt_s_fft;
   
   assign fft_s_config_tdata = 8'd1;   //INPUT, Noi dung thong so cai dat loi IP, 1: FFT, 0: IFFT
   assign fft_s_config_tvalid = 1'b1;  //INPUT, cho biet du lieu cau hinh do master cung cap la hop le
-  assign fft_s_data_tlast = ((cnt_s==1023) && fft_s_data_tvalid && fft_s_data_tready)? 1 : 0;
+  assign fft_s_data_tlast = ((cnt_s == 1023) && fft_s_data_tvalid && fft_s_data_tready) ? 1 : 0;
 
 
 
@@ -58,6 +54,20 @@ module FFT_control
       end
     end
   end
+   
+//  always @ (posedge clk or negedge rst_n) begin
+//    if (!rst_n) begin
+//      cnt_s_fft <= 0;
+//    end
+//    else begin
+//      if (fft_s_data_tlast) begin
+//        cnt_s_fft <= cnt_s_fft + 1;
+//      end
+//      else begin
+//        cnt_s_fft <= cnt_s_fft;
+//      end
+//    end
+//  end
    
   always @ (posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -142,7 +152,7 @@ module FFT_control
   wire signed [47:0] psd;
   assign psd = dout_re*dout_re + dout_im*dout_im;
   
-  reg signed [110:0] psd_array [0:1023];
+  reg signed [174:0] psd_array [0:1023];
 
   always @(posedge clk) begin
     if (fft_m_data_tvalid && fft_m_data_tready) begin
@@ -153,15 +163,17 @@ module FFT_control
     end
   end
   
-  assign psd_avg = (fft_m_data_tvalid && fft_m_data_tready && (cnt_m_fft == 63))
-                                            ?(psd_array[fft_m_data_tuser]+psd) >> 6 : 0;
+  assign psd_avg = (fft_m_data_tvalid && fft_m_data_tready && (cnt_m_fft == 127))
+                                            ?(psd_array[fft_m_data_tuser]+psd) >> 7 : 0;
 //  assign m_valid = (fft_m_data_tvalid && fft_m_data_tready && (cnt_m_fft == 63) && fft_m_data_tuser == 1023);
-  assign m_valid = fft_m_data_tvalid && fft_m_data_tready && (cnt_m_fft == 63);
+  assign m_valid = fft_m_data_tvalid && fft_m_data_tready && (cnt_m_fft == 127);
+//  assign s_ready = fft_m_data_tvalid && fft_m_data_tready && (cnt_s_fft == 63) && (cnt_s == 1023);
 
   reg signed [47:0] psd_avg_array [0:1023];
+//  reg signed [47:0] psd_avg_array [0:1023];
   always @(posedge clk) begin
     if (fft_m_data_tvalid && fft_m_data_tready) begin
-      if (cnt_m_fft == 63)
+      if (cnt_m_fft == 127)
         psd_avg_array[fft_m_data_tuser] <= psd_avg;
     end
   end

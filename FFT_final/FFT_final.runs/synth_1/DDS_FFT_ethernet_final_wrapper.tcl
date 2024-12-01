@@ -70,10 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
 set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg400-2
@@ -93,30 +90,30 @@ set_property ip_output_repo d:/Vivado/_DATN/FFT/FFT_final/FFT_final.cache/ip [cu
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/hdl/DDS_FFT_ethernet_final_wrapper.v
+read_verilog -library xil_defaultlib D:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/hdl/DDS_FFT_ethernet_final_wrapper.v
 add_files D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/bd/DDS_FFT_ethernet_final/DDS_FFT_ethernet_final.bd
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_processing_system7_0_0/DDS_FFT_ethernet_final_processing_system7_0_0.xdc]
 set_property used_in_synthesis false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/ila_v6_2/constraints/ila.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/DDS_FFT_ethernet_final_ila_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_board.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_auto_pc_0/DDS_FFT_ethernet_final_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/DDS_FFT_ethernet_final_ooc.xdc]
 
-read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_0/dds_compiler_0.xci
+read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_0/dds_compiler_0.xci
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/dds_compiler_0/dds_compiler_0_ooc.xdc]
 
-read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_1/dds_compiler_1.xci
+read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_1/dds_compiler_1.xci
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/dds_compiler_1/dds_compiler_1_ooc.xdc]
 
-read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_2/dds_compiler_2.xci
+read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_2/dds_compiler_2.xci
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/dds_compiler_2/dds_compiler_2_ooc.xdc]
 
-read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/xfft_0/xfft_0.xci
+read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/xfft_0/xfft_0.xci
 set_property used_in_implementation false [get_files -all d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/ip/xfft_0/xfft_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }

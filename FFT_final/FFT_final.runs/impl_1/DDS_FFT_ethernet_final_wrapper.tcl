@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
@@ -124,9 +123,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
   set_param chipscope.maxJobs 2
-  set_param xicom.use_bs_reader 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7z020clg400-2
   set_property design_mode GateLvl [current_fileset]
@@ -146,10 +143,10 @@ OPTRACE "add files" START { }
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
   add_files D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/bd/DDS_FFT_ethernet_final/DDS_FFT_ethernet_final.bd
-  read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_0/dds_compiler_0.xci
-  read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_1/dds_compiler_1.xci
-  read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_2/dds_compiler_2.xci
-  read_ip -quiet d:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/xfft_0/xfft_0.xci
+  read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_0/dds_compiler_0.xci
+  read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_1/dds_compiler_1.xci
+  read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/dds_compiler_2/dds_compiler_2.xci
+  read_ip -quiet D:/Vivado/_DATN/FFT/FFT_final/FFT_final.srcs/sources_1/ip/xfft_0/xfft_0.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
 OPTRACE "read constraints: implementation" END { }

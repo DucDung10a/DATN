@@ -1,7 +1,7 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Mon Nov  4 15:45:26 2024
+// Date        : Sat Nov 30 17:06:23 2024
 // Host        : DESKTOP-GLV9KF3 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_ila_0_0/DDS_FFT_ethernet_final_ila_0_0_stub.v
@@ -14,8 +14,9 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* X_CORE_INFO = "ila,Vivado 2022.2" *)
-module DDS_FFT_ethernet_final_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe5)
-/* synthesis syn_black_box black_box_pad_pin="clk,probe0[47:0],probe1[9:0],probe2[0:0],probe3[17:0],probe4[17:0],probe5[17:0]" */;
+module DDS_FFT_ethernet_final_ila_0_0(clk, probe0, probe1, probe2, probe3, probe4, probe5, 
+  probe6)
+/* synthesis syn_black_box black_box_pad_pin="clk,probe0[47:0],probe1[9:0],probe2[0:0],probe3[17:0],probe4[17:0],probe5[17:0],probe6[2:0]" */;
   input clk;
   input [47:0]probe0;
   input [9:0]probe1;
@@ -23,4 +24,5 @@ module DDS_FFT_ethernet_final_ila_0_0(clk, probe0, probe1, probe2, probe3, probe
   input [17:0]probe3;
   input [17:0]probe4;
   input [17:0]probe5;
+  input [2:0]probe6;
 endmodule

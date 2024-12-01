@@ -1,0 +1,37 @@
+$date
+        2024-Dec-01 17:50:56
+$end
+$version
+        Vivado v2022.2 (64-bit)
+$end
+$timescale
+        1ps
+$end
+$scope module dut $end
+$var reg 48 " FFT_update_i/DDS_FFT_0_psd_avg_read [47:0] $end
+$var reg 10 R FFT_update_i/myFFT_0_cnt_read [9:0] $end
+$var reg 1 \ FFT_update_i/DDS_FFT_0_m_valid $end
+$var reg 18 ] FFT_update_i/myFFT_0_dds_phase_incr_0 [17:0] $end
+$var reg 18 o FFT_update_i/myFFT_0_dds_phase_incr_1 [17:0] $end
+$var reg 18 #" FFT_update_i/myFFT_0_dds_phase_incr_2 [17:0] $end
+$var reg 3 5" FFT_update_i/myFFT_0_pos_radar [2:0] $end
+$var reg 1 8" _TRIGGER $end
+$var reg 1 9" _WINDOW $end
+$var reg 1 :" _GAP $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b111010100100011010010110100111011011 "
+b0 R
+0\
+b10011001100110011 ]
+b101000111101 o
+b1100110011001100 #"
+b100 5"
+08"
+19"
+0:"
+$end
+#512
+18"

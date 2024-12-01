@@ -1,1 +1,4 @@
 Time resolution is 1 ps
+Failure: XFFT v8.0: ERROR: ARESETN must be asserted low for a mimimum of 2 clock cycles
+Time: 15 ns  Iteration: 1  Process: /tb_DDS_FFT/dut/dut/u_fft/U0/i_synth/axi_wrapper/gen_check_aresetn/p_check_reset_length  File: C:/Xilinx/Vivado/2022.2/data/ip/xilinx/xfft_v9_1/hdl/xfft_v9_1_vh_rfs.vhd
+$finish called at time : 15 ns
