@@ -21,6 +21,7 @@
     output wire [17:0] dds_phase_incr_1,
     output wire [17:0] dds_phase_incr_2,
     output wire [9:0] cnt_read,
+    output wire [2:0] pos_radar,
     input wire m_valid,
     input wire [47:0] psd_avg_read,
 		// User ports ends
@@ -79,6 +80,7 @@
 		
 	  .fft_m_data_tvalid(fft_m_data_tvalid),
 		.cnt_read(cnt_read),
+		.pos_radar(pos_radar),
 		.m_valid(m_valid),
 		.psd_avg_read(psd_avg_read),
 		.dds_phase_incr_0(dds_phase_incr_0),

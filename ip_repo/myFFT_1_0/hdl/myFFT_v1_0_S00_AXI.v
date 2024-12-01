@@ -21,6 +21,7 @@
     output wire [17:0] dds_phase_incr_1,
     output wire [17:0] dds_phase_incr_2,
     output wire [9:0] cnt_read,
+    output wire [2:0] pos_radar,
     input wire m_valid,
     input wire signed [47:0] psd_avg_read,
 		// User ports ends
@@ -441,6 +442,7 @@
   assign slv_reg1[1] = fft_m_data_tvalid;
   assign slv_reg1[0] = m_valid;
   assign cnt_read[9:0] = slv_reg0[9:0];
+  assign pos_radar[2:0] = slv_reg4[26:24];
   assign {slv_reg3[15:0],slv_reg2} = psd_avg_read;
   
   assign dds_phase_incr_0[17:0] = slv_reg4[17:0]; 
