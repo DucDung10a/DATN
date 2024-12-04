@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\DUC DUNG\\source\\repos\\TCPClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{665A9E9F-7742-4DB0-802C-30F7D132F247}|TCPClient\\TCPClient.csproj|C:\\Users\\DUC DUNG\\source\\repos\\TCPClient\\tcpclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{665A9E9F-7742-4DB0-802C-30F7D132F247}|TCPClient\\TCPClient.csproj|c:\\users\\duc dung\\source\\repos\\tcpclient\\tcpclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{665A9E9F-7742-4DB0-802C-30F7D132F247}|TCPClient\\TCPClient.csproj|solutionrelative:tcpclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{665A9E9F-7742-4DB0-802C-30F7D132F247}|TCPClient\\TCPClient.csproj|c:\\users\\duc dung\\source\\repos\\tcpclient\\tcpclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{665A9E9F-7742-4DB0-802C-30F7D132F247}|TCPClient\\TCPClient.csproj|C:\\Users\\DUC DUNG\\source\\repos\\TCPClient\\tcpclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{665A9E9F-7742-4DB0-802C-30F7D132F247}|TCPClient\\TCPClient.csproj|solutionrelative:tcpclient\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -39,7 +39,7 @@
               "RelativeDocumentMoniker": "TCPClient\\Form1.cs",
               "ToolTip": "C:\\Users\\DUC DUNG\\source\\repos\\TCPClient\\TCPClient\\Form1.cs",
               "RelativeToolTip": "TCPClient\\Form1.cs",
-              "ViewState": "AQIAAJwAAAAAAAAAAAAAALsAAAANAAAA",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAWwNEAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T04:05:57.807Z",
               "IsPinned": true,
@@ -67,8 +67,7 @@
               "RelativeToolTip": "..\\..\\..\\STM32Cube\\Repository\\STM32Cube_FW_F1_V1.8.5\\Middlewares\\Third_Party\\FreeRTOS\\Source\\timers.c",
               "ViewState": "AQIAACEAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-11-07T12:46:04.321Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-07T12:46:04.321Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "TCPClient\\Program.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAABgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T02:50:42.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-16T02:50:42.236Z"
             },
             {
               "$type": "Document",
@@ -91,7 +89,7 @@
               "RelativeDocumentMoniker": "TCPClient\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\DUC DUNG\\source\\repos\\TCPClient\\TCPClient\\Form1.Designer.cs",
               "RelativeToolTip": "TCPClient\\Form1.Designer.cs",
-              "ViewState": "AQIAAOQAAAAAAAAAAAAAAPAAAAAWAAAA",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAAAHIAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T04:06:05.036Z",
               "EditorCaption": ""

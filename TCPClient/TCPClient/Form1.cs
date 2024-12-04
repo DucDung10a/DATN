@@ -242,7 +242,7 @@ namespace client
                     float pos = (BitConverter.ToUInt16(buffer, 6));
 
                     // Tính biên độ và chuyển đổi sang dB
-                    double amplitude = Math.Abs(Math.Sqrt(psdValue)) / 512f;
+                    double amplitude = Math.Abs(Math.Sqrt(psdValue)) / 1024f;
                     double amplitudeInDb = 20 * Math.Log10(amplitude);
 
 
@@ -329,7 +329,7 @@ namespace client
                 freq2 = GetFrequencyValue(txtFreq2);
                 freq3 = GetFrequencyValue(txtFreq3);
 
-                combinedData = (uint)((pos_radar << 24) | (freq1 << 16) | (freq2 << 8) | freq3);
+                combinedData = (uint)((pos_radar << 24) | (freq3 << 16) | (freq2 << 8) | freq1);
                 dataToSend = BitConverter.GetBytes(combinedData);
 
                 _client.Send(dataToSend);
@@ -351,7 +351,7 @@ namespace client
         }
 
 
-
+        // Đọc file để kiểm tra mô phỏng
         private void LoadDataFromFile(string filePath)
         {
             try
@@ -425,6 +425,11 @@ namespace client
         private void autoBox_CheckedChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
