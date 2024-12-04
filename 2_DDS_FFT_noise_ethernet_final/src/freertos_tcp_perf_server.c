@@ -209,7 +209,7 @@ void tcp_write_task(void *p)
         	xil_printf("Error sending data to client\n\r");
         	break;
         }
-        vTaskDelay(pdMS_TO_TICKS(200));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 
     close(sock);

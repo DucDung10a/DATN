@@ -47,3 +47,19 @@ platform config -updatehw {D:/Vivado/_DATN/FFT/FFT_final/DDS_FFT_noise_ethernet_
 bsp reload
 bsp write
 platform generate -domains 
+platform active {2_DDS_FFT_noise_ethernet_final_wrapper}
+platform config -updatehw {D:/Vivado/_DATN/FFT/FFT_final/DDS_FFT_noise_ethernet_final_wrapper.xsa}
+platform config -updatehw {D:/Vivado/_DATN/FFT/FFT_final/DDS_FFT_noise_ethernet_final_wrapper.xsa}
+platform config -updatehw {D:/Vivado/_DATN/FFT/FFT_final/DDS_FFT_noise_ethernet_final_wrapper.xsa}
+bsp reload
+bsp write
+platform generate
+platform active {2_DDS_FFT_noise_ethernet_final_wrapper}
+platform config -updatehw {D:/Vivado/_DATN/FFT/FFT_final/DDS_FFT_noise_ethernet_final_wrapper.xsa}
+bsp reload
+bsp write
+platform generate -domains 
+platform config -updatehw {D:/Vivado/_DATN/FFT/FFT_final/DDS_FFT_noise_ethernet_final_wrapper.xsa}
+bsp reload
+bsp write
+platform generate -domains 
