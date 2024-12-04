@@ -2,8 +2,8 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Sat Nov 30 17:32:22 2024
-# Process ID: 315456
+# Start of session at: Wed Dec  4 20:25:50 2024
+# Process ID: 36540
 # Current directory: D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/synth_1
 # Command line: vivado.exe -log DDS_FFT_ethernet_final_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DDS_FFT_ethernet_final_wrapper.tcl
 # Log file: D:/Vivado/_DATN/FFT/FFT_final/FFT_final.runs/synth_1/DDS_FFT_ethernet_final_wrapper.vds

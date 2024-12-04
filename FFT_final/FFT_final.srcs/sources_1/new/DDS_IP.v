@@ -11,18 +11,19 @@ module dds_0(
 );
 
   wire signed [15:0] dds_output;
-  reg signed [8:0] lfsr_noise;
+  reg signed [10:0] lfsr_noise;
   
   always @(posedge sclk or negedge aresetn) begin
     if (!aresetn) begin
-      lfsr_noise <= 9'b111010101; 
+      lfsr_noise <= 11'b00101110101; 
     end else begin
-      lfsr_noise <= {lfsr_noise[7:0], lfsr_noise[8] ^ lfsr_noise[5]};
+      lfsr_noise <= {lfsr_noise[9:0], lfsr_noise[10] ^ lfsr_noise[7]};
     end
   end
 
+//  assign dout = (pos_radar == 1) ? (dds_output + $signed({{3{lfsr_noise[10]}},lfsr_noise[10:3]})) : dds_output;
   assign dout = (pos_radar == 1) ? (dds_output + lfsr_noise) : dds_output;
-
+  
   dds_compiler_0 inst_dds_0 (
       .aclk(sclk),   
       .aresetn(aresetn),
@@ -49,16 +50,17 @@ module dds_1(
 );
 
   wire signed [15:0] dds_output;
-  reg signed [8:0] lfsr_noise;
+  reg signed [10:0] lfsr_noise;
   
   always @(posedge sclk or negedge aresetn) begin
     if (!aresetn) begin
-      lfsr_noise <= 9'b101110011; 
+      lfsr_noise <= 11'b10101110011; 
     end else begin
-      lfsr_noise <= {lfsr_noise[7:0], lfsr_noise[8] ^ lfsr_noise[0]};
+      lfsr_noise <= {lfsr_noise[9:0], lfsr_noise[10] ^ lfsr_noise[4]};
     end
   end
 
+//  assign dout = (pos_radar == 1) ? (dds_output + $signed({{3{lfsr_noise[10]}},lfsr_noise[10:3]})) : dds_output;
   assign dout = (pos_radar == 1) ? (dds_output + lfsr_noise) : dds_output;
   
   dds_compiler_1 inst_dds_1 (
@@ -87,18 +89,19 @@ module dds_2(
 );
 
   wire signed [15:0] dds_output;
-  reg signed [8:0] lfsr_noise;
+  reg signed [10:0] lfsr_noise;
   
   always @(posedge sclk or negedge aresetn) begin
     if (!aresetn) begin
-      lfsr_noise <= 9'b001110101; 
+      lfsr_noise <= 11'b01100010101; 
     end else begin
-      lfsr_noise <= {lfsr_noise[7:0], lfsr_noise[8] ^ lfsr_noise[1]};
+      lfsr_noise <= {lfsr_noise[9:0], lfsr_noise[10] ^ lfsr_noise[1]};
     end
   end
 
+//  assign dout = (pos_radar == 1) ? (dds_output + $signed({lfsr_noise[10], 2'b0, lfsr_noise[9:3]})) : dds_output;
   assign dout = (pos_radar == 1) ? (dds_output + lfsr_noise) : dds_output;
-
+  
   dds_compiler_2 inst_dds_2 (
       .aclk(sclk),   
       .aresetn(aresetn),

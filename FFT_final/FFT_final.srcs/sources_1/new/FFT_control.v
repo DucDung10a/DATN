@@ -1,6 +1,10 @@
+`timescale 1ns / 1ps
+//`define cnt_m 64
+//`define cnt_m_width 6
 `define cnt_m 8
 `define cnt_m_width 3
 module FFT_control
+//#(parameter num_FFT = 8)
 (
   input wire clk,
   input wire rst_n,
@@ -12,6 +16,7 @@ module FFT_control
   output wire fft_m_data_tvalid,
   
   input wire fft_m_data_tready,
+
   input wire [9:0] cnt_read,
   output wire m_valid, //64 FFT dau ra
 //  output wire s_ready, //64 FFT dau vao
@@ -25,11 +30,12 @@ module FFT_control
   wire fft_s_config_tvalid;
   wire fft_s_config_tready;
   
-  reg [31:0] fft_s_data_tdata;
+//  reg fft_s_data_tvalid;
+  reg signed [31:0] fft_s_data_tdata;
   wire fft_s_data_tlast;
   
   
-  wire [63:0] fft_m_data_tdata;
+  wire signed [63:0] fft_m_data_tdata;
   
   reg [9:0] cnt_s;
   reg [6:0] cnt_m_fft;

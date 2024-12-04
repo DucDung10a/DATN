@@ -1273,7 +1273,7 @@
             "direction": "I",
             "parameters": {
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "1e+08",
                 "value_src": "user_prop"
               },
               "CLK_DOMAIN": {

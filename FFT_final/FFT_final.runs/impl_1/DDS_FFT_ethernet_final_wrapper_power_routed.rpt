@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date             : Sat Nov 30 17:41:36 2024
+| Date             : Wed Dec  4 20:32:52 2024
 | Host             : DESKTOP-GLV9KF3 running 64-bit major release  (build 9200)
 | Command          : report_power -file DDS_FFT_ethernet_final_wrapper_power_routed.rpt -pb DDS_FFT_ethernet_final_wrapper_power_summary_routed.pb -rpx DDS_FFT_ethernet_final_wrapper_power_routed.rpx
 | Design           : DDS_FFT_ethernet_final_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.819        |
+| Total On-Chip Power (W)  | 1.817        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.672        |
+| Dynamic (W)              | 1.671        |
 | Device Static (W)        | 0.146        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 64.0         |
@@ -52,21 +52,21 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.030 |        4 |       --- |             --- |
-| Slice Logic              |     0.032 |    18618 |       --- |             --- |
-|   LUT as Logic           |     0.017 |     4092 |     53200 |            7.69 |
+| Clocks                   |     0.029 |        4 |       --- |             --- |
+| Slice Logic              |     0.032 |    18617 |       --- |             --- |
+|   LUT as Logic           |     0.017 |     4087 |     53200 |            7.68 |
 |   LUT as Distributed RAM |     0.007 |      935 |     17400 |            5.37 |
-|   Register               |     0.003 |     8272 |    106400 |            7.77 |
-|   LUT as Shift Register  |     0.003 |      943 |     17400 |            5.42 |
+|   Register               |     0.003 |     8273 |    106400 |            7.78 |
+|   LUT as Shift Register  |     0.003 |      944 |     17400 |            5.43 |
 |   CARRY4                 |     0.002 |      501 |     13300 |            3.77 |
 |   F7/F8 Muxes            |    <0.001 |      695 |     53200 |            1.31 |
 |   Others                 |     0.000 |     1422 |       --- |             --- |
-| Signals                  |     0.036 |    11505 |       --- |             --- |
+| Signals                  |     0.036 |    11501 |       --- |             --- |
 | Block RAM                |     0.030 |       15 |       140 |           10.71 |
 | DSPs                     |     0.016 |       17 |       220 |            7.73 |
 | PS7                      |     1.529 |        1 |       --- |             --- |
 | Static Power             |     0.146 |          |           |                 |
-| Total                    |     1.819 |          |           |                 |
+| Total                    |     1.817 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.158 |       0.142 |      0.016 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.157 |       0.140 |      0.016 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.016 |       0.000 |      0.016 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -153,10 +153,10 @@ Table of Contents
 +--------------------------------+-----------+
 | Name                           | Power (W) |
 +--------------------------------+-----------+
-| DDS_FFT_ethernet_final_wrapper |     1.672 |
-|   DDS_FFT_ethernet_final_i     |     1.670 |
-|     DDS_FFT_0                  |     0.126 |
-|       inst                     |     0.126 |
+| DDS_FFT_ethernet_final_wrapper |     1.671 |
+|   DDS_FFT_ethernet_final_i     |     1.669 |
+|     DDS_FFT_0                  |     0.125 |
+|       inst                     |     0.125 |
 |     ila_0                      |     0.010 |
 |       inst                     |     0.010 |
 |     myFFT_0                    |     0.001 |

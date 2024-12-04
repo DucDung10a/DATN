@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Sat Nov 30 17:32:16 2024
+| Date         : Wed Dec  4 20:25:44 2024
 | Host         : DESKTOP-GLV9KF3 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file DDS_FFT_ethernet_final_DDS_FFT_0_0_utilization_synth.rpt -pb DDS_FFT_ethernet_final_DDS_FFT_0_0_utilization_synth.pb
 | Design       : DDS_FFT_ethernet_final_DDS_FFT_0_0
@@ -31,13 +31,13 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*                | 1232 |     0 |          0 |     53200 |  2.32 |
-|   LUT as Logic             |  352 |     0 |          0 |     53200 |  0.66 |
+| Slice LUTs*                | 1229 |     0 |          0 |     53200 |  2.31 |
+|   LUT as Logic             |  349 |     0 |          0 |     53200 |  0.66 |
 |   LUT as Memory            |  880 |     0 |          0 |     17400 |  5.06 |
 |     LUT as Distributed RAM |  880 |     0 |            |           |       |
 |     LUT as Shift Register  |    0 |     0 |            |           |       |
-| Slice Registers            |   76 |     0 |          0 |    106400 |  0.07 |
-|   Register as Flip Flop    |   76 |     0 |          0 |    106400 |  0.07 |
+| Slice Registers            |   77 |     0 |          0 |    106400 |  0.07 |
+|   Register as Flip Flop    |   77 |     0 |          0 |    106400 |  0.07 |
 |   Register as Latch        |    0 |     0 |          0 |    106400 |  0.00 |
 | F7 Muxes                   |  440 |     0 |          0 |     26600 |  1.65 |
 | F8 Muxes                   |  220 |     0 |          0 |     13300 |  1.65 |
@@ -58,7 +58,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 17    |          Yes |           - |          Set |
+| 18    |          Yes |           - |          Set |
 | 59    |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 0     |          Yes |       Reset |            - |
@@ -156,15 +156,15 @@ Warning! LUT value is adjusted to account for LUT combining.
 | RAMS64E  |  880 |  Distributed Memory |
 | MUXF7    |  440 |               MuxFx |
 | MUXF8    |  220 |               MuxFx |
-| LUT2     |  145 |                 LUT |
+| LUT2     |  136 |                 LUT |
 | LUT6     |  115 |                 LUT |
 | FDCE     |   59 |        Flop & Latch |
 | LUT4     |   57 |                 LUT |
 | CARRY4   |   42 |          CarryLogic |
-| LUT5     |   33 |                 LUT |
-| FDPE     |   17 |        Flop & Latch |
+| LUT5     |   39 |                 LUT |
+| FDPE     |   18 |        Flop & Latch |
 | LUT3     |    9 |                 LUT |
-| LUT1     |    4 |                 LUT |
+| LUT1     |    5 |                 LUT |
 | DSP48E1  |    4 |    Block Arithmetic |
 | RAMB36E1 |    1 |        Block Memory |
 | RAMB18E1 |    1 |        Block Memory |

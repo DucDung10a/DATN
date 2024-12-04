@@ -116,11 +116,8 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0.xci">
-          <Proxy FileSetName="DDS_FFT_ethernet_final_rst_ps7_0_100M_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0.xci">
-          <Proxy FileSetName="DDS_FFT_ethernet_final_DDS_FFT_0_0"/>
+        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_myFFT_0_2/DDS_FFT_ethernet_final_myFFT_0_2.xci">
+          <Proxy FileSetName="DDS_FFT_ethernet_final_myFFT_0_2"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_ila_0_0/DDS_FFT_ethernet_final_ila_0_0.xci">
           <Proxy FileSetName="DDS_FFT_ethernet_final_ila_0_0"/>
@@ -128,8 +125,11 @@
         <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_processing_system7_0_0/DDS_FFT_ethernet_final_processing_system7_0_0.xci">
           <Proxy FileSetName="DDS_FFT_ethernet_final_processing_system7_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_myFFT_0_2/DDS_FFT_ethernet_final_myFFT_0_2.xci">
-          <Proxy FileSetName="DDS_FFT_ethernet_final_myFFT_0_2"/>
+        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0.xci">
+          <Proxy FileSetName="DDS_FFT_ethernet_final_rst_ps7_0_100M_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="DDS_FFT_ethernet_final.bd" FileRelPathName="ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0.xci">
+          <Proxy FileSetName="DDS_FFT_ethernet_final_DDS_FFT_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/DDS_FFT_ethernet_final/hdl/DDS_FFT_ethernet_final_wrapper.v">
@@ -371,9 +371,7 @@
     </Run>
     <Run Id="DDS_FFT_ethernet_final_myFFT_0_2_synth_1" Type="Ft3:Synth" SrcSet="DDS_FFT_ethernet_final_myFFT_0_2" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_myFFT_0_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/DDS_FFT_ethernet_final_myFFT_0_2_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -532,9 +530,7 @@
     </Run>
     <Run Id="DDS_FFT_ethernet_final_myFFT_0_2_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-2" ConstrsSet="DDS_FFT_ethernet_final_myFFT_0_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="DDS_FFT_ethernet_final_myFFT_0_2_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/DDS_FFT_ethernet_final_myFFT_0_2_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

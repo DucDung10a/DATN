@@ -21,20 +21,20 @@ wire s_axis_config_tvalid_0;
 wire s_axis_config_tvalid_1;
 wire s_axis_config_tvalid_2;
 
-wire [15:0] dout_dds_0;
-wire [15:0] dout_dds_1;
-wire [15:0] dout_dds_2;
+wire signed [15:0] dout_dds_0;
+wire signed [15:0] dout_dds_1;
+wire signed [15:0] dout_dds_2;
 wire m_axis_data_tvalid_0;
 wire m_axis_data_tvalid_1;
 wire m_axis_data_tvalid_2;
 
-wire [15:0] dsine;
-wire [15:0] dcosine;
+wire signed [15:0] dsine;
+wire signed [15:0] dcosine;
 
 //wire s_ready;
 
-assign dsine = dout_dds_0;
-assign dcosine = dout_dds_1 + dout_dds_2;
+assign dsine = $signed({{3{dout_dds_0[15]}},dout_dds_0[15:3]});
+assign dcosine = $signed({{3{dout_dds_1[15]}},dout_dds_1[15:3]}) + $signed({{3{dout_dds_2[15]}},dout_dds_2[15:3]});
 
 assign s_axis_config_tvalid_0 = 1'b1;
 assign s_axis_config_tvalid_1 = 1'b1;

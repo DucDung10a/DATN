@@ -16,6 +16,9 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==DDS_FFT_eth
 # IP: bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_rst_ps7_0_100M_0/DDS_FFT_ethernet_final_rst_ps7_0_100M_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==DDS_FFT_ethernet_final_rst_ps7_0_100M_0 || ORIG_REF_NAME==DDS_FFT_ethernet_final_rst_ps7_0_100M_0} -quiet] -quiet
 
+# IP: bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_myFFT_0_2/DDS_FFT_ethernet_final_myFFT_0_2.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==DDS_FFT_ethernet_final_myFFT_0_2 || ORIG_REF_NAME==DDS_FFT_ethernet_final_myFFT_0_2} -quiet] -quiet
+
 # IP: bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==DDS_FFT_ethernet_final_DDS_FFT_0_0 || ORIG_REF_NAME==DDS_FFT_ethernet_final_DDS_FFT_0_0} -quiet] -quiet
 
@@ -30,9 +33,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==dds_compile
 
 # IP: ip/dds_compiler_0/dds_compiler_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==dds_compiler_0 || ORIG_REF_NAME==dds_compiler_0} -quiet] -quiet
-
-# IP: bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_myFFT_0_2/DDS_FFT_ethernet_final_myFFT_0_2.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==DDS_FFT_ethernet_final_myFFT_0_2 || ORIG_REF_NAME==DDS_FFT_ethernet_final_myFFT_0_2} -quiet] -quiet
 
 # IP: bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_auto_pc_0/DDS_FFT_ethernet_final_auto_pc_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==DDS_FFT_ethernet_final_auto_pc_0 || ORIG_REF_NAME==DDS_FFT_ethernet_final_auto_pc_0} -quiet] -quiet

@@ -1,7 +1,7 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Sat Nov 30 17:32:16 2024
+// Date        : Wed Dec  4 20:25:44 2024
 // Host        : DESKTOP-GLV9KF3 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               d:/Vivado/_DATN/FFT/FFT_final/FFT_final.gen/sources_1/bd/DDS_FFT_ethernet_final/ip/DDS_FFT_ethernet_final_DDS_FFT_0_0/DDS_FFT_ethernet_final_DDS_FFT_0_0_sim_netlist.v
@@ -26,7 +26,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0
     cnt_read,
     m_valid,
     psd_avg_read);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN DDS_FFT_ethernet_final_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 1e+08, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN DDS_FFT_ethernet_final_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst_n;
   input [17:0]dds_phase_incr_0;
   input [17:0]dds_phase_incr_1;
@@ -87,12 +87,22 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_DDS_FFT
   wire clk;
   wire [9:0]cnt_read;
   wire cnt_s0;
+  wire [15:0]dcosine;
+  wire dds0_n_10;
+  wire dds0_n_11;
+  wire dds0_n_12;
+  wire dds0_n_13;
+  wire dds0_n_2;
+  wire dds0_n_3;
+  wire dds0_n_4;
+  wire dds0_n_5;
+  wire dds0_n_6;
+  wire dds0_n_7;
+  wire dds0_n_8;
+  wire dds0_n_9;
   wire [17:0]dds_phase_incr_0;
   wire [17:0]dds_phase_incr_1;
   wire [17:0]dds_phase_incr_2;
-  wire [15:0]dout;
-  wire [15:0]dout_dds_1;
-  wire [15:0]dout_dds_2;
   wire dut_n_0;
   wire dut_n_51;
   wire [55:0]fft_m_data_tdata;
@@ -102,6 +112,8 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_DDS_FFT
   wire m_axis_data_tvalid_1;
   wire m_axis_data_tvalid_2;
   wire m_valid;
+  wire [12:0]p_0_in;
+  wire p_0_in0;
   wire p_1_out__0_n_100;
   wire p_1_out__0_n_101;
   wire p_1_out__0_n_102;
@@ -401,7 +413,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_DDS_FFT
   wire [47:0]NLW_p_1_out__2_PCOUT_UNCONNECTED;
 
   DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0 dds0
-       (.D(dout),
+       (.D({p_0_in0,dds0_n_2,dds0_n_3,dds0_n_4,dds0_n_5,dds0_n_6,dds0_n_7,dds0_n_8,dds0_n_9,dds0_n_10,dds0_n_11,dds0_n_12,dds0_n_13}),
         .E(cnt_s0),
         .clk(clk),
         .dds_phase_incr_0(dds_phase_incr_0),
@@ -413,11 +425,12 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_DDS_FFT
         .rst_n(rst_n),
         .s_axis_data_tready(dut_n_0));
   DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_1 dds1
-       (.clk(clk),
+       (.D({dcosine[15],dcosine[12:0]}),
+        .clk(clk),
         .dds_phase_incr_1(dds_phase_incr_1),
-        .dout_dds_1(dout_dds_1),
         .\lfsr_noise_reg[0]_0 (dut_n_51),
         .m_axis_data_tvalid(m_axis_data_tvalid_1),
+        .p_0_in(p_0_in),
         .p_1_out__0(m_axis_data_tvalid_2),
         .p_1_out__0_0(m_axis_data_tvalid_0),
         .pos_radar(pos_radar),
@@ -426,19 +439,17 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_DDS_FFT
   DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2 dds2
        (.clk(clk),
         .dds_phase_incr_2(dds_phase_incr_2),
-        .dout_dds_2(dout_dds_2),
         .\lfsr_noise_reg[0]_0 (dut_n_51),
         .m_axis_data_tvalid(m_axis_data_tvalid_2),
+        .p_0_in(p_0_in),
         .pos_radar(pos_radar),
         .rst_n(rst_n));
   DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control dut
-       (.D(dout),
+       (.D({p_0_in0,dds0_n_2,dds0_n_3,dds0_n_4,dds0_n_5,dds0_n_6,dds0_n_7,dds0_n_8,dds0_n_9,dds0_n_10,dds0_n_11,dds0_n_12,dds0_n_13,dcosine[15],dcosine[12:0]}),
         .E(cnt_s0),
         .P({p_1_out__1_n_89,p_1_out__1_n_90,p_1_out__1_n_91,p_1_out__1_n_92,p_1_out__1_n_93,p_1_out__1_n_94,p_1_out__1_n_95,p_1_out__1_n_96,p_1_out__1_n_97,p_1_out__1_n_98,p_1_out__1_n_99,p_1_out__1_n_100,p_1_out__1_n_101,p_1_out__1_n_102,p_1_out__1_n_103,p_1_out__1_n_104,p_1_out__1_n_105}),
         .clk(clk),
         .cnt_read(cnt_read),
-        .dout_dds_1(dout_dds_1),
-        .dout_dds_2(dout_dds_2),
         .m_axis_data_tdata({fft_m_data_tdata[55:32],fft_m_data_tdata[23:0]}),
         .m_axis_data_tvalid(fft_m_data_tvalid),
         .m_valid(m_valid),
@@ -781,8 +792,6 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     p_1_out__0_1,
     psd_carry__10_1,
     psd_carry__3_0,
-    dout_dds_1,
-    dout_dds_2,
     cnt_read,
     E,
     D);
@@ -802,13 +811,11 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   input p_1_out__0_1;
   input [30:0]psd_carry__10_1;
   input [16:0]psd_carry__3_0;
-  input [15:0]dout_dds_1;
-  input [15:0]dout_dds_2;
   input [9:0]cnt_read;
   input [0:0]E;
-  input [15:0]D;
+  input [26:0]D;
 
-  wire [15:0]D;
+  wire [26:0]D;
   wire [0:0]E;
   wire [16:0]P;
   wire _carry__0_i_5_n_0;
@@ -981,43 +988,9 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire [9:0]cnt_read;
   wire \cnt_s[9]_i_2_n_0 ;
   wire [9:0]cnt_s_reg;
-  wire [15:0]dcosine;
-  wire [15:0]dout_dds_1;
-  wire [15:0]dout_dds_2;
   wire fft_m_data_tlast;
   wire [9:0]fft_m_data_tuser;
   wire [31:0]fft_s_data_tdata;
-  wire \fft_s_data_tdata[11]_i_3_n_0 ;
-  wire \fft_s_data_tdata[11]_i_4_n_0 ;
-  wire \fft_s_data_tdata[11]_i_5_n_0 ;
-  wire \fft_s_data_tdata[11]_i_6_n_0 ;
-  wire \fft_s_data_tdata[15]_i_3_n_0 ;
-  wire \fft_s_data_tdata[15]_i_4_n_0 ;
-  wire \fft_s_data_tdata[15]_i_5_n_0 ;
-  wire \fft_s_data_tdata[15]_i_6_n_0 ;
-  wire \fft_s_data_tdata[3]_i_3_n_0 ;
-  wire \fft_s_data_tdata[3]_i_4_n_0 ;
-  wire \fft_s_data_tdata[3]_i_5_n_0 ;
-  wire \fft_s_data_tdata[3]_i_6_n_0 ;
-  wire \fft_s_data_tdata[7]_i_3_n_0 ;
-  wire \fft_s_data_tdata[7]_i_4_n_0 ;
-  wire \fft_s_data_tdata[7]_i_5_n_0 ;
-  wire \fft_s_data_tdata[7]_i_6_n_0 ;
-  wire \fft_s_data_tdata_reg[11]_i_1_n_0 ;
-  wire \fft_s_data_tdata_reg[11]_i_1_n_1 ;
-  wire \fft_s_data_tdata_reg[11]_i_1_n_2 ;
-  wire \fft_s_data_tdata_reg[11]_i_1_n_3 ;
-  wire \fft_s_data_tdata_reg[15]_i_1_n_1 ;
-  wire \fft_s_data_tdata_reg[15]_i_1_n_2 ;
-  wire \fft_s_data_tdata_reg[15]_i_1_n_3 ;
-  wire \fft_s_data_tdata_reg[3]_i_1_n_0 ;
-  wire \fft_s_data_tdata_reg[3]_i_1_n_1 ;
-  wire \fft_s_data_tdata_reg[3]_i_1_n_2 ;
-  wire \fft_s_data_tdata_reg[3]_i_1_n_3 ;
-  wire \fft_s_data_tdata_reg[7]_i_1_n_0 ;
-  wire \fft_s_data_tdata_reg[7]_i_1_n_1 ;
-  wire \fft_s_data_tdata_reg[7]_i_1_n_2 ;
-  wire \fft_s_data_tdata_reg[7]_i_1_n_3 ;
   wire fft_s_data_tlast;
   wire [47:0]m_axis_data_tdata;
   wire m_axis_data_tvalid;
@@ -1025,7 +998,6 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire m_valid_INST_0_i_1_n_0;
   wire [6:0]p_0_in;
   wire [9:0]p_0_in__0;
-  wire [47:0]p_1_in;
   wire p_1_out__0;
   wire p_1_out__0_0;
   wire p_1_out__0_1;
@@ -1267,6 +1239,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__0_n_1;
   wire psd_carry__0_n_2;
   wire psd_carry__0_n_3;
+  wire psd_carry__0_n_4;
+  wire psd_carry__0_n_5;
+  wire psd_carry__0_n_6;
+  wire psd_carry__0_n_7;
   wire [30:0]psd_carry__10_0;
   wire [30:0]psd_carry__10_1;
   wire psd_carry__10_i_1_n_0;
@@ -1276,6 +1252,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__10_n_1;
   wire psd_carry__10_n_2;
   wire psd_carry__10_n_3;
+  wire psd_carry__10_n_4;
+  wire psd_carry__10_n_5;
+  wire psd_carry__10_n_6;
+  wire psd_carry__10_n_7;
   wire psd_carry__1_i_1_n_0;
   wire psd_carry__1_i_2_n_0;
   wire psd_carry__1_i_3_n_0;
@@ -1284,6 +1264,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__1_n_1;
   wire psd_carry__1_n_2;
   wire psd_carry__1_n_3;
+  wire psd_carry__1_n_4;
+  wire psd_carry__1_n_5;
+  wire psd_carry__1_n_6;
+  wire psd_carry__1_n_7;
   wire psd_carry__2_i_1_n_0;
   wire psd_carry__2_i_2_n_0;
   wire psd_carry__2_i_3_n_0;
@@ -1292,6 +1276,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__2_n_1;
   wire psd_carry__2_n_2;
   wire psd_carry__2_n_3;
+  wire psd_carry__2_n_4;
+  wire psd_carry__2_n_5;
+  wire psd_carry__2_n_6;
+  wire psd_carry__2_n_7;
   wire [16:0]psd_carry__3_0;
   wire psd_carry__3_i_1_n_0;
   wire psd_carry__3_i_2_n_0;
@@ -1301,6 +1289,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__3_n_1;
   wire psd_carry__3_n_2;
   wire psd_carry__3_n_3;
+  wire psd_carry__3_n_4;
+  wire psd_carry__3_n_5;
+  wire psd_carry__3_n_6;
+  wire psd_carry__3_n_7;
   wire psd_carry__4_i_1_n_0;
   wire psd_carry__4_i_2_n_0;
   wire psd_carry__4_i_3_n_0;
@@ -1309,6 +1301,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__4_n_1;
   wire psd_carry__4_n_2;
   wire psd_carry__4_n_3;
+  wire psd_carry__4_n_4;
+  wire psd_carry__4_n_5;
+  wire psd_carry__4_n_6;
+  wire psd_carry__4_n_7;
   wire psd_carry__5_i_1_n_0;
   wire psd_carry__5_i_2_n_0;
   wire psd_carry__5_i_3_n_0;
@@ -1317,6 +1313,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__5_n_1;
   wire psd_carry__5_n_2;
   wire psd_carry__5_n_3;
+  wire psd_carry__5_n_4;
+  wire psd_carry__5_n_5;
+  wire psd_carry__5_n_6;
+  wire psd_carry__5_n_7;
   wire psd_carry__6_i_1_n_0;
   wire psd_carry__6_i_2_n_0;
   wire psd_carry__6_i_3_n_0;
@@ -1325,6 +1325,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__6_n_1;
   wire psd_carry__6_n_2;
   wire psd_carry__6_n_3;
+  wire psd_carry__6_n_4;
+  wire psd_carry__6_n_5;
+  wire psd_carry__6_n_6;
+  wire psd_carry__6_n_7;
   wire psd_carry__7_i_1_n_0;
   wire psd_carry__7_i_2_n_0;
   wire psd_carry__7_i_3_n_0;
@@ -1333,6 +1337,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__7_n_1;
   wire psd_carry__7_n_2;
   wire psd_carry__7_n_3;
+  wire psd_carry__7_n_4;
+  wire psd_carry__7_n_5;
+  wire psd_carry__7_n_6;
+  wire psd_carry__7_n_7;
   wire psd_carry__8_i_1_n_0;
   wire psd_carry__8_i_2_n_0;
   wire psd_carry__8_i_3_n_0;
@@ -1341,6 +1349,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__8_n_1;
   wire psd_carry__8_n_2;
   wire psd_carry__8_n_3;
+  wire psd_carry__8_n_4;
+  wire psd_carry__8_n_5;
+  wire psd_carry__8_n_6;
+  wire psd_carry__8_n_7;
   wire psd_carry__9_i_1_n_0;
   wire psd_carry__9_i_2_n_0;
   wire psd_carry__9_i_3_n_0;
@@ -1349,6 +1361,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry__9_n_1;
   wire psd_carry__9_n_2;
   wire psd_carry__9_n_3;
+  wire psd_carry__9_n_4;
+  wire psd_carry__9_n_5;
+  wire psd_carry__9_n_6;
+  wire psd_carry__9_n_7;
   wire psd_carry_i_1_n_0;
   wire psd_carry_i_2_n_0;
   wire psd_carry_i_3_n_0;
@@ -1357,6 +1373,10 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire psd_carry_n_1;
   wire psd_carry_n_2;
   wire psd_carry_n_3;
+  wire psd_carry_n_4;
+  wire psd_carry_n_5;
+  wire psd_carry_n_6;
+  wire psd_carry_n_7;
   wire rst_n;
   wire rst_n_0;
   wire s_axis_data_tready;
@@ -1364,7 +1384,6 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   wire u_fft_i_3_n_0;
   wire [3:2]NLW__carry__12_CO_UNCONNECTED;
   wire [3:3]NLW__carry__12_O_UNCONNECTED;
-  wire [3:3]\NLW_fft_s_data_tdata_reg[15]_i_1_CO_UNCONNECTED ;
   wire NLW_psd_avg_array_reg_0_CASCADEOUTA_UNCONNECTED;
   wire NLW_psd_avg_array_reg_0_CASCADEOUTB_UNCONNECTED;
   wire NLW_psd_avg_array_reg_0_DBITERR_UNCONNECTED;
@@ -1448,25 +1467,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__0_i_5
        (.I0(p_1_out__3[7]),
-        .I1(p_1_in[7]),
+        .I1(psd_carry__0_n_4),
         .O(_carry__0_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__0_i_6
        (.I0(p_1_out__3[6]),
-        .I1(p_1_in[6]),
+        .I1(psd_carry__0_n_5),
         .O(_carry__0_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__0_i_7
        (.I0(p_1_out__3[5]),
-        .I1(p_1_in[5]),
+        .I1(psd_carry__0_n_6),
         .O(_carry__0_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__0_i_8
        (.I0(p_1_out__3[4]),
-        .I1(p_1_in[4]),
+        .I1(psd_carry__0_n_7),
         .O(_carry__0_i_8_n_0));
   CARRY4 _carry__1
        (.CI(_carry__0_n_0),
@@ -1479,7 +1498,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
        (.CI(_carry__9_n_0),
         .CO({_carry__10_n_0,_carry__10_n_1,_carry__10_n_2,_carry__10_n_3}),
         .CYINIT(1'b0),
-        .DI({p_1_in[47],p_1_out__3[46:44]}),
+        .DI({psd_carry__10_n_4,p_1_out__3[46:44]}),
         .O({_carry__10_n_4,_carry__10_n_5,_carry__10_n_6,_carry__10_n_7}),
         .S({_carry__10_i_4_n_0,_carry__10_i_5_n_0,_carry__10_i_6_n_0,_carry__10_i_7_n_0}));
   LUT6 #(
@@ -1515,26 +1534,26 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   LUT2 #(
     .INIT(4'h6)) 
     _carry__10_i_4
-       (.I0(p_1_in[47]),
+       (.I0(psd_carry__10_n_4),
         .I1(p_1_out__3[47]),
         .O(_carry__10_i_4_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__10_i_5
        (.I0(p_1_out__3[46]),
-        .I1(p_1_in[46]),
+        .I1(psd_carry__10_n_5),
         .O(_carry__10_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__10_i_6
        (.I0(p_1_out__3[45]),
-        .I1(p_1_in[45]),
+        .I1(psd_carry__10_n_6),
         .O(_carry__10_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__10_i_7
        (.I0(p_1_out__3[44]),
-        .I1(p_1_in[44]),
+        .I1(psd_carry__10_n_7),
         .O(_carry__10_i_7_n_0));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1586,7 +1605,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   LUT1 #(
     .INIT(2'h1)) 
     _carry__11_i_4
-       (.I0(p_1_in[47]),
+       (.I0(psd_carry__10_n_4),
         .O(_carry__11_i_4_n_0));
   LUT2 #(
     .INIT(4'h9)) 
@@ -1609,7 +1628,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
   LUT2 #(
     .INIT(4'h6)) 
     _carry__11_i_8
-       (.I0(p_1_in[47]),
+       (.I0(psd_carry__10_n_4),
         .I1(p_1_out__3[48]),
         .O(_carry__11_i_8_n_0));
   CARRY4 _carry__12
@@ -1721,25 +1740,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__1_i_5
        (.I0(p_1_out__3[11]),
-        .I1(p_1_in[11]),
+        .I1(psd_carry__1_n_4),
         .O(_carry__1_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__1_i_6
        (.I0(p_1_out__3[10]),
-        .I1(p_1_in[10]),
+        .I1(psd_carry__1_n_5),
         .O(_carry__1_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__1_i_7
        (.I0(p_1_out__3[9]),
-        .I1(p_1_in[9]),
+        .I1(psd_carry__1_n_6),
         .O(_carry__1_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__1_i_8
        (.I0(p_1_out__3[8]),
-        .I1(p_1_in[8]),
+        .I1(psd_carry__1_n_7),
         .O(_carry__1_i_8_n_0));
   CARRY4 _carry__2
        (.CI(_carry__1_n_0),
@@ -1792,25 +1811,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__2_i_5
        (.I0(p_1_out__3[15]),
-        .I1(p_1_in[15]),
+        .I1(psd_carry__2_n_4),
         .O(_carry__2_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__2_i_6
        (.I0(p_1_out__3[14]),
-        .I1(p_1_in[14]),
+        .I1(psd_carry__2_n_5),
         .O(_carry__2_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__2_i_7
        (.I0(p_1_out__3[13]),
-        .I1(p_1_in[13]),
+        .I1(psd_carry__2_n_6),
         .O(_carry__2_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__2_i_8
        (.I0(p_1_out__3[12]),
-        .I1(p_1_in[12]),
+        .I1(psd_carry__2_n_7),
         .O(_carry__2_i_8_n_0));
   CARRY4 _carry__3
        (.CI(_carry__2_n_0),
@@ -1863,25 +1882,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__3_i_5
        (.I0(p_1_out__3[19]),
-        .I1(p_1_in[19]),
+        .I1(psd_carry__3_n_4),
         .O(_carry__3_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__3_i_6
        (.I0(p_1_out__3[18]),
-        .I1(p_1_in[18]),
+        .I1(psd_carry__3_n_5),
         .O(_carry__3_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__3_i_7
        (.I0(p_1_out__3[17]),
-        .I1(p_1_in[17]),
+        .I1(psd_carry__3_n_6),
         .O(_carry__3_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__3_i_8
        (.I0(p_1_out__3[16]),
-        .I1(p_1_in[16]),
+        .I1(psd_carry__3_n_7),
         .O(_carry__3_i_8_n_0));
   CARRY4 _carry__4
        (.CI(_carry__3_n_0),
@@ -1934,25 +1953,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__4_i_5
        (.I0(p_1_out__3[23]),
-        .I1(p_1_in[23]),
+        .I1(psd_carry__4_n_4),
         .O(_carry__4_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__4_i_6
        (.I0(p_1_out__3[22]),
-        .I1(p_1_in[22]),
+        .I1(psd_carry__4_n_5),
         .O(_carry__4_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__4_i_7
        (.I0(p_1_out__3[21]),
-        .I1(p_1_in[21]),
+        .I1(psd_carry__4_n_6),
         .O(_carry__4_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__4_i_8
        (.I0(p_1_out__3[20]),
-        .I1(p_1_in[20]),
+        .I1(psd_carry__4_n_7),
         .O(_carry__4_i_8_n_0));
   CARRY4 _carry__5
        (.CI(_carry__4_n_0),
@@ -2005,25 +2024,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__5_i_5
        (.I0(p_1_out__3[27]),
-        .I1(p_1_in[27]),
+        .I1(psd_carry__5_n_4),
         .O(_carry__5_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__5_i_6
        (.I0(p_1_out__3[26]),
-        .I1(p_1_in[26]),
+        .I1(psd_carry__5_n_5),
         .O(_carry__5_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__5_i_7
        (.I0(p_1_out__3[25]),
-        .I1(p_1_in[25]),
+        .I1(psd_carry__5_n_6),
         .O(_carry__5_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__5_i_8
        (.I0(p_1_out__3[24]),
-        .I1(p_1_in[24]),
+        .I1(psd_carry__5_n_7),
         .O(_carry__5_i_8_n_0));
   CARRY4 _carry__6
        (.CI(_carry__5_n_0),
@@ -2076,25 +2095,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__6_i_5
        (.I0(p_1_out__3[31]),
-        .I1(p_1_in[31]),
+        .I1(psd_carry__6_n_4),
         .O(_carry__6_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__6_i_6
        (.I0(p_1_out__3[30]),
-        .I1(p_1_in[30]),
+        .I1(psd_carry__6_n_5),
         .O(_carry__6_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__6_i_7
        (.I0(p_1_out__3[29]),
-        .I1(p_1_in[29]),
+        .I1(psd_carry__6_n_6),
         .O(_carry__6_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__6_i_8
        (.I0(p_1_out__3[28]),
-        .I1(p_1_in[28]),
+        .I1(psd_carry__6_n_7),
         .O(_carry__6_i_8_n_0));
   CARRY4 _carry__7
        (.CI(_carry__6_n_0),
@@ -2147,25 +2166,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__7_i_5
        (.I0(p_1_out__3[35]),
-        .I1(p_1_in[35]),
+        .I1(psd_carry__7_n_4),
         .O(_carry__7_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__7_i_6
        (.I0(p_1_out__3[34]),
-        .I1(p_1_in[34]),
+        .I1(psd_carry__7_n_5),
         .O(_carry__7_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__7_i_7
        (.I0(p_1_out__3[33]),
-        .I1(p_1_in[33]),
+        .I1(psd_carry__7_n_6),
         .O(_carry__7_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__7_i_8
        (.I0(p_1_out__3[32]),
-        .I1(p_1_in[32]),
+        .I1(psd_carry__7_n_7),
         .O(_carry__7_i_8_n_0));
   CARRY4 _carry__8
        (.CI(_carry__7_n_0),
@@ -2218,25 +2237,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__8_i_5
        (.I0(p_1_out__3[39]),
-        .I1(p_1_in[39]),
+        .I1(psd_carry__8_n_4),
         .O(_carry__8_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__8_i_6
        (.I0(p_1_out__3[38]),
-        .I1(p_1_in[38]),
+        .I1(psd_carry__8_n_5),
         .O(_carry__8_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__8_i_7
        (.I0(p_1_out__3[37]),
-        .I1(p_1_in[37]),
+        .I1(psd_carry__8_n_6),
         .O(_carry__8_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__8_i_8
        (.I0(p_1_out__3[36]),
-        .I1(p_1_in[36]),
+        .I1(psd_carry__8_n_7),
         .O(_carry__8_i_8_n_0));
   CARRY4 _carry__9
        (.CI(_carry__8_n_0),
@@ -2289,25 +2308,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry__9_i_5
        (.I0(p_1_out__3[43]),
-        .I1(p_1_in[43]),
+        .I1(psd_carry__9_n_4),
         .O(_carry__9_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__9_i_6
        (.I0(p_1_out__3[42]),
-        .I1(p_1_in[42]),
+        .I1(psd_carry__9_n_5),
         .O(_carry__9_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__9_i_7
        (.I0(p_1_out__3[41]),
-        .I1(p_1_in[41]),
+        .I1(psd_carry__9_n_6),
         .O(_carry__9_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry__9_i_8
        (.I0(p_1_out__3[40]),
-        .I1(p_1_in[40]),
+        .I1(psd_carry__9_n_7),
         .O(_carry__9_i_8_n_0));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -2353,25 +2372,25 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
     .INIT(4'h6)) 
     _carry_i_5
        (.I0(p_1_out__3[3]),
-        .I1(p_1_in[3]),
+        .I1(psd_carry_n_4),
         .O(_carry_i_5_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry_i_6
        (.I0(p_1_out__3[2]),
-        .I1(p_1_in[2]),
+        .I1(psd_carry_n_5),
         .O(_carry_i_6_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry_i_7
        (.I0(p_1_out__3[1]),
-        .I1(p_1_in[1]),
+        .I1(psd_carry_n_6),
         .O(_carry_i_7_n_0));
   LUT2 #(
     .INIT(4'h6)) 
     _carry_i_8
        (.I0(p_1_out__3[0]),
-        .I1(p_1_in[0]),
+        .I1(psd_carry_n_7),
         .O(_carry_i_8_n_0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -2623,329 +2642,171 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CLR(rst_n_0),
         .D(p_0_in__0[9]),
         .Q(cnt_s_reg[9]));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[11]_i_3 
-       (.I0(dout_dds_1[11]),
-        .I1(dout_dds_2[11]),
-        .O(\fft_s_data_tdata[11]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[11]_i_4 
-       (.I0(dout_dds_1[10]),
-        .I1(dout_dds_2[10]),
-        .O(\fft_s_data_tdata[11]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[11]_i_5 
-       (.I0(dout_dds_1[9]),
-        .I1(dout_dds_2[9]),
-        .O(\fft_s_data_tdata[11]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[11]_i_6 
-       (.I0(dout_dds_1[8]),
-        .I1(dout_dds_2[8]),
-        .O(\fft_s_data_tdata[11]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[15]_i_3 
-       (.I0(dout_dds_1[15]),
-        .I1(dout_dds_2[15]),
-        .O(\fft_s_data_tdata[15]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[15]_i_4 
-       (.I0(dout_dds_1[14]),
-        .I1(dout_dds_2[14]),
-        .O(\fft_s_data_tdata[15]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[15]_i_5 
-       (.I0(dout_dds_1[13]),
-        .I1(dout_dds_2[13]),
-        .O(\fft_s_data_tdata[15]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[15]_i_6 
-       (.I0(dout_dds_1[12]),
-        .I1(dout_dds_2[12]),
-        .O(\fft_s_data_tdata[15]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[3]_i_3 
-       (.I0(dout_dds_1[3]),
-        .I1(dout_dds_2[3]),
-        .O(\fft_s_data_tdata[3]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[3]_i_4 
-       (.I0(dout_dds_1[2]),
-        .I1(dout_dds_2[2]),
-        .O(\fft_s_data_tdata[3]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[3]_i_5 
-       (.I0(dout_dds_1[1]),
-        .I1(dout_dds_2[1]),
-        .O(\fft_s_data_tdata[3]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[3]_i_6 
-       (.I0(dout_dds_1[0]),
-        .I1(dout_dds_2[0]),
-        .O(\fft_s_data_tdata[3]_i_6_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[7]_i_3 
-       (.I0(dout_dds_1[7]),
-        .I1(dout_dds_2[7]),
-        .O(\fft_s_data_tdata[7]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[7]_i_4 
-       (.I0(dout_dds_1[6]),
-        .I1(dout_dds_2[6]),
-        .O(\fft_s_data_tdata[7]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[7]_i_5 
-       (.I0(dout_dds_1[5]),
-        .I1(dout_dds_2[5]),
-        .O(\fft_s_data_tdata[7]_i_5_n_0 ));
-  LUT2 #(
-    .INIT(4'h6)) 
-    \fft_s_data_tdata[7]_i_6 
-       (.I0(dout_dds_1[4]),
-        .I1(dout_dds_2[4]),
-        .O(\fft_s_data_tdata[7]_i_6_n_0 ));
   FDCE \fft_s_data_tdata_reg[0] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[0]),
+        .D(D[0]),
         .Q(fft_s_data_tdata[0]));
   FDCE \fft_s_data_tdata_reg[10] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[10]),
+        .D(D[10]),
         .Q(fft_s_data_tdata[10]));
   FDCE \fft_s_data_tdata_reg[11] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[11]),
+        .D(D[11]),
         .Q(fft_s_data_tdata[11]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[11]_i_1 
-       (.CI(\fft_s_data_tdata_reg[7]_i_1_n_0 ),
-        .CO({\fft_s_data_tdata_reg[11]_i_1_n_0 ,\fft_s_data_tdata_reg[11]_i_1_n_1 ,\fft_s_data_tdata_reg[11]_i_1_n_2 ,\fft_s_data_tdata_reg[11]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI(dout_dds_1[11:8]),
-        .O(dcosine[11:8]),
-        .S({\fft_s_data_tdata[11]_i_3_n_0 ,\fft_s_data_tdata[11]_i_4_n_0 ,\fft_s_data_tdata[11]_i_5_n_0 ,\fft_s_data_tdata[11]_i_6_n_0 }));
   FDCE \fft_s_data_tdata_reg[12] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[12]),
+        .D(D[12]),
         .Q(fft_s_data_tdata[12]));
-  FDCE \fft_s_data_tdata_reg[13] 
-       (.C(clk),
-        .CE(E),
-        .CLR(rst_n_0),
-        .D(dcosine[13]),
-        .Q(fft_s_data_tdata[13]));
-  FDCE \fft_s_data_tdata_reg[14] 
-       (.C(clk),
-        .CE(E),
-        .CLR(rst_n_0),
-        .D(dcosine[14]),
-        .Q(fft_s_data_tdata[14]));
   FDCE \fft_s_data_tdata_reg[15] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[15]),
+        .D(D[13]),
         .Q(fft_s_data_tdata[15]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[15]_i_1 
-       (.CI(\fft_s_data_tdata_reg[11]_i_1_n_0 ),
-        .CO({\NLW_fft_s_data_tdata_reg[15]_i_1_CO_UNCONNECTED [3],\fft_s_data_tdata_reg[15]_i_1_n_1 ,\fft_s_data_tdata_reg[15]_i_1_n_2 ,\fft_s_data_tdata_reg[15]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI({1'b0,dout_dds_1[14:12]}),
-        .O(dcosine[15:12]),
-        .S({\fft_s_data_tdata[15]_i_3_n_0 ,\fft_s_data_tdata[15]_i_4_n_0 ,\fft_s_data_tdata[15]_i_5_n_0 ,\fft_s_data_tdata[15]_i_6_n_0 }));
   FDCE \fft_s_data_tdata_reg[16] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[0]),
+        .D(D[14]),
         .Q(fft_s_data_tdata[16]));
   FDCE \fft_s_data_tdata_reg[17] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[1]),
+        .D(D[15]),
         .Q(fft_s_data_tdata[17]));
   FDCE \fft_s_data_tdata_reg[18] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[2]),
+        .D(D[16]),
         .Q(fft_s_data_tdata[18]));
   FDCE \fft_s_data_tdata_reg[19] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[3]),
+        .D(D[17]),
         .Q(fft_s_data_tdata[19]));
   FDCE \fft_s_data_tdata_reg[1] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[1]),
+        .D(D[1]),
         .Q(fft_s_data_tdata[1]));
   FDCE \fft_s_data_tdata_reg[20] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[4]),
+        .D(D[18]),
         .Q(fft_s_data_tdata[20]));
   FDCE \fft_s_data_tdata_reg[21] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[5]),
+        .D(D[19]),
         .Q(fft_s_data_tdata[21]));
   FDCE \fft_s_data_tdata_reg[22] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[6]),
+        .D(D[20]),
         .Q(fft_s_data_tdata[22]));
   FDCE \fft_s_data_tdata_reg[23] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[7]),
+        .D(D[21]),
         .Q(fft_s_data_tdata[23]));
   FDCE \fft_s_data_tdata_reg[24] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[8]),
+        .D(D[22]),
         .Q(fft_s_data_tdata[24]));
   FDCE \fft_s_data_tdata_reg[25] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[9]),
+        .D(D[23]),
         .Q(fft_s_data_tdata[25]));
   FDCE \fft_s_data_tdata_reg[26] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[10]),
+        .D(D[24]),
         .Q(fft_s_data_tdata[26]));
   FDCE \fft_s_data_tdata_reg[27] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[11]),
+        .D(D[25]),
         .Q(fft_s_data_tdata[27]));
-  FDCE \fft_s_data_tdata_reg[28] 
-       (.C(clk),
-        .CE(E),
-        .CLR(rst_n_0),
-        .D(D[12]),
-        .Q(fft_s_data_tdata[28]));
-  FDCE \fft_s_data_tdata_reg[29] 
-       (.C(clk),
-        .CE(E),
-        .CLR(rst_n_0),
-        .D(D[13]),
-        .Q(fft_s_data_tdata[29]));
   FDCE \fft_s_data_tdata_reg[2] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[2]),
+        .D(D[2]),
         .Q(fft_s_data_tdata[2]));
-  FDCE \fft_s_data_tdata_reg[30] 
-       (.C(clk),
-        .CE(E),
-        .CLR(rst_n_0),
-        .D(D[14]),
-        .Q(fft_s_data_tdata[30]));
   FDCE \fft_s_data_tdata_reg[31] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(D[15]),
+        .D(D[26]),
         .Q(fft_s_data_tdata[31]));
   FDCE \fft_s_data_tdata_reg[3] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[3]),
+        .D(D[3]),
         .Q(fft_s_data_tdata[3]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[3]_i_1 
-       (.CI(1'b0),
-        .CO({\fft_s_data_tdata_reg[3]_i_1_n_0 ,\fft_s_data_tdata_reg[3]_i_1_n_1 ,\fft_s_data_tdata_reg[3]_i_1_n_2 ,\fft_s_data_tdata_reg[3]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI(dout_dds_1[3:0]),
-        .O(dcosine[3:0]),
-        .S({\fft_s_data_tdata[3]_i_3_n_0 ,\fft_s_data_tdata[3]_i_4_n_0 ,\fft_s_data_tdata[3]_i_5_n_0 ,\fft_s_data_tdata[3]_i_6_n_0 }));
   FDCE \fft_s_data_tdata_reg[4] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[4]),
+        .D(D[4]),
         .Q(fft_s_data_tdata[4]));
   FDCE \fft_s_data_tdata_reg[5] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[5]),
+        .D(D[5]),
         .Q(fft_s_data_tdata[5]));
   FDCE \fft_s_data_tdata_reg[6] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[6]),
+        .D(D[6]),
         .Q(fft_s_data_tdata[6]));
   FDCE \fft_s_data_tdata_reg[7] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[7]),
+        .D(D[7]),
         .Q(fft_s_data_tdata[7]));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[7]_i_1 
-       (.CI(\fft_s_data_tdata_reg[3]_i_1_n_0 ),
-        .CO({\fft_s_data_tdata_reg[7]_i_1_n_0 ,\fft_s_data_tdata_reg[7]_i_1_n_1 ,\fft_s_data_tdata_reg[7]_i_1_n_2 ,\fft_s_data_tdata_reg[7]_i_1_n_3 }),
-        .CYINIT(1'b0),
-        .DI(dout_dds_1[7:4]),
-        .O(dcosine[7:4]),
-        .S({\fft_s_data_tdata[7]_i_3_n_0 ,\fft_s_data_tdata[7]_i_4_n_0 ,\fft_s_data_tdata[7]_i_5_n_0 ,\fft_s_data_tdata[7]_i_6_n_0 }));
   FDCE \fft_s_data_tdata_reg[8] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[8]),
+        .D(D[8]),
         .Q(fft_s_data_tdata[8]));
   FDCE \fft_s_data_tdata_reg[9] 
        (.C(clk),
         .CE(E),
         .CLR(rst_n_0),
-        .D(dcosine[9]),
+        .D(D[9]),
         .Q(fft_s_data_tdata[9]));
   LUT1 #(
     .INIT(2'h1)) 
-    \lfsr_noise[8]_i_1 
+    \lfsr_noise[10]_i_1 
        (.I0(rst_n),
         .O(rst_n_0));
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
@@ -2989,7 +2850,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry_n_7),
-        .I5(p_1_in[0]),
+        .I5(psd_carry_n_7),
         .O(p_2_in[0]));
   LUT3 #(
     .INIT(8'h02)) 
@@ -3029,7 +2890,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__1_n_5),
-        .I5(p_1_in[10]),
+        .I5(psd_carry__1_n_5),
         .O(p_2_in[10]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3054,7 +2915,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__1_n_4),
-        .I5(p_1_in[11]),
+        .I5(psd_carry__1_n_4),
         .O(p_2_in[11]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3079,7 +2940,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__2_n_7),
-        .I5(p_1_in[12]),
+        .I5(psd_carry__2_n_7),
         .O(p_2_in[12]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3104,7 +2965,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__2_n_6),
-        .I5(p_1_in[13]),
+        .I5(psd_carry__2_n_6),
         .O(p_2_in[13]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3129,7 +2990,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__2_n_5),
-        .I5(p_1_in[14]),
+        .I5(psd_carry__2_n_5),
         .O(p_2_in[14]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3154,7 +3015,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__2_n_4),
-        .I5(p_1_in[15]),
+        .I5(psd_carry__2_n_4),
         .O(p_2_in[15]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3179,7 +3040,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__3_n_7),
-        .I5(p_1_in[16]),
+        .I5(psd_carry__3_n_7),
         .O(p_2_in[16]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3204,7 +3065,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__3_n_6),
-        .I5(p_1_in[17]),
+        .I5(psd_carry__3_n_6),
         .O(p_2_in[17]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3229,7 +3090,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__3_n_5),
-        .I5(p_1_in[18]),
+        .I5(psd_carry__3_n_5),
         .O(p_2_in[18]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3254,7 +3115,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__3_n_4),
-        .I5(p_1_in[19]),
+        .I5(psd_carry__3_n_4),
         .O(p_2_in[19]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3279,7 +3140,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry_n_6),
-        .I5(p_1_in[1]),
+        .I5(psd_carry_n_6),
         .O(p_2_in[1]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3304,7 +3165,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__4_n_7),
-        .I5(p_1_in[20]),
+        .I5(psd_carry__4_n_7),
         .O(p_2_in[20]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3329,7 +3190,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__4_n_6),
-        .I5(p_1_in[21]),
+        .I5(psd_carry__4_n_6),
         .O(p_2_in[21]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3354,7 +3215,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__4_n_5),
-        .I5(p_1_in[22]),
+        .I5(psd_carry__4_n_5),
         .O(p_2_in[22]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3379,7 +3240,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__4_n_4),
-        .I5(p_1_in[23]),
+        .I5(psd_carry__4_n_4),
         .O(p_2_in[23]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3404,7 +3265,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__5_n_7),
-        .I5(p_1_in[24]),
+        .I5(psd_carry__5_n_7),
         .O(p_2_in[24]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3429,7 +3290,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__5_n_6),
-        .I5(p_1_in[25]),
+        .I5(psd_carry__5_n_6),
         .O(p_2_in[25]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3454,7 +3315,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__5_n_5),
-        .I5(p_1_in[26]),
+        .I5(psd_carry__5_n_5),
         .O(p_2_in[26]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3479,7 +3340,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__5_n_4),
-        .I5(p_1_in[27]),
+        .I5(psd_carry__5_n_4),
         .O(p_2_in[27]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3504,7 +3365,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__6_n_7),
-        .I5(p_1_in[28]),
+        .I5(psd_carry__6_n_7),
         .O(p_2_in[28]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3529,7 +3390,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__6_n_6),
-        .I5(p_1_in[29]),
+        .I5(psd_carry__6_n_6),
         .O(p_2_in[29]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3554,7 +3415,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry_n_5),
-        .I5(p_1_in[2]),
+        .I5(psd_carry_n_5),
         .O(p_2_in[2]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3579,7 +3440,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__6_n_5),
-        .I5(p_1_in[30]),
+        .I5(psd_carry__6_n_5),
         .O(p_2_in[30]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3604,7 +3465,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__6_n_4),
-        .I5(p_1_in[31]),
+        .I5(psd_carry__6_n_4),
         .O(p_2_in[31]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3629,7 +3490,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__7_n_7),
-        .I5(p_1_in[32]),
+        .I5(psd_carry__7_n_7),
         .O(p_2_in[32]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3654,7 +3515,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__7_n_6),
-        .I5(p_1_in[33]),
+        .I5(psd_carry__7_n_6),
         .O(p_2_in[33]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3679,7 +3540,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__7_n_5),
-        .I5(p_1_in[34]),
+        .I5(psd_carry__7_n_5),
         .O(p_2_in[34]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3704,7 +3565,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__7_n_4),
-        .I5(p_1_in[35]),
+        .I5(psd_carry__7_n_4),
         .O(p_2_in[35]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3729,7 +3590,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__8_n_7),
-        .I5(p_1_in[36]),
+        .I5(psd_carry__8_n_7),
         .O(p_2_in[36]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3754,7 +3615,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__8_n_6),
-        .I5(p_1_in[37]),
+        .I5(psd_carry__8_n_6),
         .O(p_2_in[37]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3779,7 +3640,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__8_n_5),
-        .I5(p_1_in[38]),
+        .I5(psd_carry__8_n_5),
         .O(p_2_in[38]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3804,7 +3665,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__8_n_4),
-        .I5(p_1_in[39]),
+        .I5(psd_carry__8_n_4),
         .O(p_2_in[39]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3829,7 +3690,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry_n_4),
-        .I5(p_1_in[3]),
+        .I5(psd_carry_n_4),
         .O(p_2_in[3]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3854,7 +3715,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__9_n_7),
-        .I5(p_1_in[40]),
+        .I5(psd_carry__9_n_7),
         .O(p_2_in[40]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3879,7 +3740,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__9_n_6),
-        .I5(p_1_in[41]),
+        .I5(psd_carry__9_n_6),
         .O(p_2_in[41]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3904,7 +3765,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__9_n_5),
-        .I5(p_1_in[42]),
+        .I5(psd_carry__9_n_5),
         .O(p_2_in[42]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3929,7 +3790,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__9_n_4),
-        .I5(p_1_in[43]),
+        .I5(psd_carry__9_n_4),
         .O(p_2_in[43]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3954,7 +3815,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__10_n_7),
-        .I5(p_1_in[44]),
+        .I5(psd_carry__10_n_7),
         .O(p_2_in[44]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -3979,7 +3840,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__10_n_6),
-        .I5(p_1_in[45]),
+        .I5(psd_carry__10_n_6),
         .O(p_2_in[45]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4004,7 +3865,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__10_n_5),
-        .I5(p_1_in[46]),
+        .I5(psd_carry__10_n_5),
         .O(p_2_in[46]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4029,7 +3890,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__10_n_4),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[47]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4054,7 +3915,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__11_n_7),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[48]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4079,7 +3940,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__11_n_6),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[49]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4104,7 +3965,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__0_n_7),
-        .I5(p_1_in[4]),
+        .I5(psd_carry__0_n_7),
         .O(p_2_in[4]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4129,7 +3990,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__11_n_5),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[50]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4154,7 +4015,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__11_n_4),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[51]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4179,7 +4040,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__12_n_7),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[52]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4204,7 +4065,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__12_n_6),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[53]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4229,7 +4090,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__12_n_5),
-        .I5(p_1_in[47]),
+        .I5(psd_carry__10_n_4),
         .O(p_2_in[54]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4254,7 +4115,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__0_n_6),
-        .I5(p_1_in[5]),
+        .I5(psd_carry__0_n_6),
         .O(p_2_in[5]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4279,7 +4140,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__0_n_5),
-        .I5(p_1_in[6]),
+        .I5(psd_carry__0_n_5),
         .O(p_2_in[6]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4304,7 +4165,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__0_n_4),
-        .I5(p_1_in[7]),
+        .I5(psd_carry__0_n_4),
         .O(p_2_in[7]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4329,7 +4190,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__1_n_7),
-        .I5(p_1_in[8]),
+        .I5(psd_carry__1_n_7),
         .O(p_2_in[8]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -4354,7 +4215,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .I2(cnt_m_fft_reg[5]),
         .I3(cnt_m_fft_reg[6]),
         .I4(_carry__1_n_6),
-        .I5(p_1_in[9]),
+        .I5(psd_carry__1_n_6),
         .O(p_2_in[9]));
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-5 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "179200" *) 
@@ -7368,7 +7229,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry_n_0,psd_carry_n_1,psd_carry_n_2,psd_carry_n_3}),
         .CYINIT(1'b0),
         .DI(P[3:0]),
-        .O(p_1_in[3:0]),
+        .O({psd_carry_n_4,psd_carry_n_5,psd_carry_n_6,psd_carry_n_7}),
         .S({psd_carry_i_1_n_0,psd_carry_i_2_n_0,psd_carry_i_3_n_0,psd_carry_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 psd_carry__0
@@ -7376,7 +7237,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__0_n_0,psd_carry__0_n_1,psd_carry__0_n_2,psd_carry__0_n_3}),
         .CYINIT(1'b0),
         .DI(P[7:4]),
-        .O(p_1_in[7:4]),
+        .O({psd_carry__0_n_4,psd_carry__0_n_5,psd_carry__0_n_6,psd_carry__0_n_7}),
         .S({psd_carry__0_i_1_n_0,psd_carry__0_i_2_n_0,psd_carry__0_i_3_n_0,psd_carry__0_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7408,7 +7269,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__1_n_0,psd_carry__1_n_1,psd_carry__1_n_2,psd_carry__1_n_3}),
         .CYINIT(1'b0),
         .DI(P[11:8]),
-        .O(p_1_in[11:8]),
+        .O({psd_carry__1_n_4,psd_carry__1_n_5,psd_carry__1_n_6,psd_carry__1_n_7}),
         .S({psd_carry__1_i_1_n_0,psd_carry__1_i_2_n_0,psd_carry__1_i_3_n_0,psd_carry__1_i_4_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 psd_carry__10
@@ -7416,7 +7277,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({NLW_psd_carry__10_CO_UNCONNECTED[3],psd_carry__10_n_1,psd_carry__10_n_2,psd_carry__10_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,psd_carry__10_0[29:27]}),
-        .O(p_1_in[47:44]),
+        .O({psd_carry__10_n_4,psd_carry__10_n_5,psd_carry__10_n_6,psd_carry__10_n_7}),
         .S({psd_carry__10_i_1_n_0,psd_carry__10_i_2_n_0,psd_carry__10_i_3_n_0,psd_carry__10_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7472,7 +7333,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__2_n_0,psd_carry__2_n_1,psd_carry__2_n_2,psd_carry__2_n_3}),
         .CYINIT(1'b0),
         .DI(P[15:12]),
-        .O(p_1_in[15:12]),
+        .O({psd_carry__2_n_4,psd_carry__2_n_5,psd_carry__2_n_6,psd_carry__2_n_7}),
         .S({psd_carry__2_i_1_n_0,psd_carry__2_i_2_n_0,psd_carry__2_i_3_n_0,psd_carry__2_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7504,7 +7365,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__3_n_0,psd_carry__3_n_1,psd_carry__3_n_2,psd_carry__3_n_3}),
         .CYINIT(1'b0),
         .DI({psd_carry__10_0[2:0],P[16]}),
-        .O(p_1_in[19:16]),
+        .O({psd_carry__3_n_4,psd_carry__3_n_5,psd_carry__3_n_6,psd_carry__3_n_7}),
         .S({psd_carry__3_i_1_n_0,psd_carry__3_i_2_n_0,psd_carry__3_i_3_n_0,psd_carry__3_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7536,7 +7397,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__4_n_0,psd_carry__4_n_1,psd_carry__4_n_2,psd_carry__4_n_3}),
         .CYINIT(1'b0),
         .DI(psd_carry__10_0[6:3]),
-        .O(p_1_in[23:20]),
+        .O({psd_carry__4_n_4,psd_carry__4_n_5,psd_carry__4_n_6,psd_carry__4_n_7}),
         .S({psd_carry__4_i_1_n_0,psd_carry__4_i_2_n_0,psd_carry__4_i_3_n_0,psd_carry__4_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7568,7 +7429,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__5_n_0,psd_carry__5_n_1,psd_carry__5_n_2,psd_carry__5_n_3}),
         .CYINIT(1'b0),
         .DI(psd_carry__10_0[10:7]),
-        .O(p_1_in[27:24]),
+        .O({psd_carry__5_n_4,psd_carry__5_n_5,psd_carry__5_n_6,psd_carry__5_n_7}),
         .S({psd_carry__5_i_1_n_0,psd_carry__5_i_2_n_0,psd_carry__5_i_3_n_0,psd_carry__5_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7600,7 +7461,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__6_n_0,psd_carry__6_n_1,psd_carry__6_n_2,psd_carry__6_n_3}),
         .CYINIT(1'b0),
         .DI(psd_carry__10_0[14:11]),
-        .O(p_1_in[31:28]),
+        .O({psd_carry__6_n_4,psd_carry__6_n_5,psd_carry__6_n_6,psd_carry__6_n_7}),
         .S({psd_carry__6_i_1_n_0,psd_carry__6_i_2_n_0,psd_carry__6_i_3_n_0,psd_carry__6_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7632,7 +7493,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__7_n_0,psd_carry__7_n_1,psd_carry__7_n_2,psd_carry__7_n_3}),
         .CYINIT(1'b0),
         .DI(psd_carry__10_0[18:15]),
-        .O(p_1_in[35:32]),
+        .O({psd_carry__7_n_4,psd_carry__7_n_5,psd_carry__7_n_6,psd_carry__7_n_7}),
         .S({psd_carry__7_i_1_n_0,psd_carry__7_i_2_n_0,psd_carry__7_i_3_n_0,psd_carry__7_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7664,7 +7525,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__8_n_0,psd_carry__8_n_1,psd_carry__8_n_2,psd_carry__8_n_3}),
         .CYINIT(1'b0),
         .DI(psd_carry__10_0[22:19]),
-        .O(p_1_in[39:36]),
+        .O({psd_carry__8_n_4,psd_carry__8_n_5,psd_carry__8_n_6,psd_carry__8_n_7}),
         .S({psd_carry__8_i_1_n_0,psd_carry__8_i_2_n_0,psd_carry__8_i_3_n_0,psd_carry__8_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7696,7 +7557,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .CO({psd_carry__9_n_0,psd_carry__9_n_1,psd_carry__9_n_2,psd_carry__9_n_3}),
         .CYINIT(1'b0),
         .DI(psd_carry__10_0[26:23]),
-        .O(p_1_in[43:40]),
+        .O({psd_carry__9_n_4,psd_carry__9_n_5,psd_carry__9_n_6,psd_carry__9_n_7}),
         .S({psd_carry__9_i_1_n_0,psd_carry__9_i_2_n_0,psd_carry__9_i_3_n_0,psd_carry__9_i_4_n_0}));
   LUT2 #(
     .INIT(4'h6)) 
@@ -7764,7 +7625,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_FFT_control
         .s_axis_config_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1}),
         .s_axis_config_tready(NLW_u_fft_s_axis_config_tready_UNCONNECTED),
         .s_axis_config_tvalid(1'b1),
-        .s_axis_data_tdata(fft_s_data_tdata),
+        .s_axis_data_tdata({fft_s_data_tdata[31],fft_s_data_tdata[31],fft_s_data_tdata[31],fft_s_data_tdata[31],fft_s_data_tdata[27:15],fft_s_data_tdata[15],fft_s_data_tdata[15],fft_s_data_tdata[12:0]}),
         .s_axis_data_tlast(fft_s_data_tlast),
         .s_axis_data_tready(s_axis_data_tready),
         .s_axis_data_tvalid(s_axis_data_tvalid));
@@ -7803,7 +7664,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
     pos_radar,
     \lfsr_noise_reg[0]_0 );
   output m_axis_data_tvalid;
-  output [15:0]D;
+  output [12:0]D;
   output [0:0]E;
   input clk;
   input rst_n;
@@ -7814,52 +7675,53 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
   input [2:0]pos_radar;
   input \lfsr_noise_reg[0]_0 ;
 
-  wire [15:0]D;
+  wire [12:0]D;
   wire [0:0]E;
   wire clk;
   wire [15:0]dds_output;
   wire [17:0]dds_phase_incr_0;
-  wire dout0_carry__0_i_1_n_0;
-  wire dout0_carry__0_i_2_n_0;
-  wire dout0_carry__0_i_3_n_0;
-  wire dout0_carry__0_i_4_n_0;
+  wire dout0_carry__0_i_1__1_n_0;
+  wire dout0_carry__0_i_2__1_n_0;
+  wire dout0_carry__0_i_3__1_n_0;
+  wire dout0_carry__0_i_4__1_n_0;
   wire dout0_carry__0_n_0;
   wire dout0_carry__0_n_1;
   wire dout0_carry__0_n_2;
   wire dout0_carry__0_n_3;
-  wire dout0_carry__1_i_1_n_0;
-  wire dout0_carry__1_i_2_n_0;
-  wire dout0_carry__1_i_3_n_0;
-  wire dout0_carry__1_i_4_n_0;
-  wire dout0_carry__1_i_5_n_0;
+  wire dout0_carry__1_i_1__1_n_0;
+  wire dout0_carry__1_i_2__1_n_0;
+  wire dout0_carry__1_i_3__1_n_0;
+  wire dout0_carry__1_i_4__1_n_0;
+  wire dout0_carry__1_i_5__1_n_0;
   wire dout0_carry__1_n_0;
   wire dout0_carry__1_n_1;
   wire dout0_carry__1_n_2;
   wire dout0_carry__1_n_3;
-  wire dout0_carry__2_i_1_n_0;
-  wire dout0_carry__2_i_2_n_0;
-  wire dout0_carry__2_i_3_n_0;
-  wire dout0_carry__2_i_4_n_0;
+  wire dout0_carry__2_i_1__1_n_0;
+  wire dout0_carry__2_i_2__1_n_0;
+  wire dout0_carry__2_i_3__1_n_0;
+  wire dout0_carry__2_i_4__1_n_0;
   wire dout0_carry__2_n_1;
   wire dout0_carry__2_n_2;
   wire dout0_carry__2_n_3;
-  wire dout0_carry_i_1_n_0;
-  wire dout0_carry_i_2_n_0;
-  wire dout0_carry_i_3_n_0;
-  wire dout0_carry_i_4_n_0;
+  wire dout0_carry_i_1__1_n_0;
+  wire dout0_carry_i_2__1_n_0;
+  wire dout0_carry_i_3__1_n_0;
+  wire dout0_carry_i_4__1_n_0;
   wire dout0_carry_n_0;
   wire dout0_carry_n_1;
   wire dout0_carry_n_2;
   wire dout0_carry_n_3;
   wire \fft_s_data_tdata_reg[31] ;
   wire \fft_s_data_tdata_reg[31]_0 ;
-  wire [8:0]lfsr_noise;
+  wire [10:0]lfsr_noise;
   wire \lfsr_noise[0]_i_1__1_n_0 ;
   wire \lfsr_noise_reg[0]_0 ;
   wire m_axis_data_tvalid;
   wire [2:0]pos_radar;
   wire rst_n;
   wire s_axis_data_tready;
+  wire [2:0]NLW_dout0_carry_O_UNCONNECTED;
   wire [3:3]NLW_dout0_carry__2_CO_UNCONNECTED;
 
   (* ADDER_THRESHOLD = "35" *) 
@@ -7868,166 +7730,172 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
         .CO({dout0_carry_n_0,dout0_carry_n_1,dout0_carry_n_2,dout0_carry_n_3}),
         .CYINIT(1'b0),
         .DI(dds_output[3:0]),
-        .O(D[3:0]),
-        .S({dout0_carry_i_1_n_0,dout0_carry_i_2_n_0,dout0_carry_i_3_n_0,dout0_carry_i_4_n_0}));
+        .O({D[0],NLW_dout0_carry_O_UNCONNECTED[2:0]}),
+        .S({dout0_carry_i_1__1_n_0,dout0_carry_i_2__1_n_0,dout0_carry_i_3__1_n_0,dout0_carry_i_4__1_n_0}));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dout0_carry__0
        (.CI(dout0_carry_n_0),
         .CO({dout0_carry__0_n_0,dout0_carry__0_n_1,dout0_carry__0_n_2,dout0_carry__0_n_3}),
         .CYINIT(1'b0),
         .DI(dds_output[7:4]),
-        .O(D[7:4]),
-        .S({dout0_carry__0_i_1_n_0,dout0_carry__0_i_2_n_0,dout0_carry__0_i_3_n_0,dout0_carry__0_i_4_n_0}));
+        .O(D[4:1]),
+        .S({dout0_carry__0_i_1__1_n_0,dout0_carry__0_i_2__1_n_0,dout0_carry__0_i_3__1_n_0,dout0_carry__0_i_4__1_n_0}));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry__0_i_1
+    dout0_carry__0_i_1__1
        (.I0(dds_output[7]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[7]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry__0_i_1_n_0));
+        .O(dout0_carry__0_i_1__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry__0_i_2
+    dout0_carry__0_i_2__1
        (.I0(dds_output[6]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[6]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry__0_i_2_n_0));
+        .O(dout0_carry__0_i_2__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry__0_i_3
+    dout0_carry__0_i_3__1
        (.I0(dds_output[5]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[5]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry__0_i_3_n_0));
+        .O(dout0_carry__0_i_3__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry__0_i_4
+    dout0_carry__0_i_4__1
        (.I0(dds_output[4]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[4]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry__0_i_4_n_0));
+        .O(dout0_carry__0_i_4__1_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dout0_carry__1
        (.CI(dout0_carry__0_n_0),
         .CO({dout0_carry__1_n_0,dout0_carry__1_n_1,dout0_carry__1_n_2,dout0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({dds_output[10:9],dout0_carry__1_i_1_n_0,dds_output[8]}),
-        .O(D[11:8]),
-        .S({dout0_carry__1_i_2_n_0,dout0_carry__1_i_3_n_0,dout0_carry__1_i_4_n_0,dout0_carry__1_i_5_n_0}));
+        .DI({dout0_carry__1_i_1__1_n_0,dds_output[10:8]}),
+        .O(D[8:5]),
+        .S({dout0_carry__1_i_2__1_n_0,dout0_carry__1_i_3__1_n_0,dout0_carry__1_i_4__1_n_0,dout0_carry__1_i_5__1_n_0}));
   LUT4 #(
     .INIT(16'hFFF7)) 
-    dout0_carry__1_i_1
+    dout0_carry__1_i_1__1
        (.I0(pos_radar[0]),
-        .I1(lfsr_noise[8]),
+        .I1(lfsr_noise[10]),
         .I2(pos_radar[1]),
         .I3(pos_radar[2]),
-        .O(dout0_carry__1_i_1_n_0));
-  LUT2 #(
-    .INIT(4'h9)) 
-    dout0_carry__1_i_2
-       (.I0(dds_output[10]),
-        .I1(dds_output[11]),
-        .O(dout0_carry__1_i_2_n_0));
-  LUT2 #(
-    .INIT(4'h9)) 
-    dout0_carry__1_i_3
+        .O(dout0_carry__1_i_1__1_n_0));
+  LUT5 #(
+    .INIT(32'hFFF70008)) 
+    dout0_carry__1_i_2__1
+       (.I0(pos_radar[0]),
+        .I1(lfsr_noise[10]),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .I4(dds_output[11]),
+        .O(dout0_carry__1_i_2__1_n_0));
+  LUT5 #(
+    .INIT(32'hFFF70008)) 
+    dout0_carry__1_i_3__1
+       (.I0(pos_radar[0]),
+        .I1(lfsr_noise[10]),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .I4(dds_output[10]),
+        .O(dout0_carry__1_i_3__1_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__1_i_4__1
        (.I0(dds_output[9]),
-        .I1(dds_output[10]),
-        .O(dout0_carry__1_i_3_n_0));
+        .I1(pos_radar[0]),
+        .I2(lfsr_noise[9]),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__1_i_4__1_n_0));
   LUT5 #(
-    .INIT(32'hFFF70008)) 
-    dout0_carry__1_i_4
-       (.I0(pos_radar[0]),
-        .I1(lfsr_noise[8]),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .I4(dds_output[9]),
-        .O(dout0_carry__1_i_4_n_0));
-  LUT5 #(
-    .INIT(32'hFFF70008)) 
-    dout0_carry__1_i_5
-       (.I0(pos_radar[0]),
-        .I1(lfsr_noise[8]),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .I4(dds_output[8]),
-        .O(dout0_carry__1_i_5_n_0));
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__1_i_5__1
+       (.I0(dds_output[8]),
+        .I1(pos_radar[0]),
+        .I2(lfsr_noise[8]),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__1_i_5__1_n_0));
   (* ADDER_THRESHOLD = "35" *) 
   CARRY4 dout0_carry__2
        (.CI(dout0_carry__1_n_0),
         .CO({NLW_dout0_carry__2_CO_UNCONNECTED[3],dout0_carry__2_n_1,dout0_carry__2_n_2,dout0_carry__2_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,dds_output[13:11]}),
-        .O(D[15:12]),
-        .S({dout0_carry__2_i_1_n_0,dout0_carry__2_i_2_n_0,dout0_carry__2_i_3_n_0,dout0_carry__2_i_4_n_0}));
+        .O(D[12:9]),
+        .S({dout0_carry__2_i_1__1_n_0,dout0_carry__2_i_2__1_n_0,dout0_carry__2_i_3__1_n_0,dout0_carry__2_i_4__1_n_0}));
   LUT2 #(
     .INIT(4'h9)) 
-    dout0_carry__2_i_1
+    dout0_carry__2_i_1__1
        (.I0(dds_output[14]),
         .I1(dds_output[15]),
-        .O(dout0_carry__2_i_1_n_0));
+        .O(dout0_carry__2_i_1__1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
-    dout0_carry__2_i_2
+    dout0_carry__2_i_2__1
        (.I0(dds_output[13]),
         .I1(dds_output[14]),
-        .O(dout0_carry__2_i_2_n_0));
+        .O(dout0_carry__2_i_2__1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
-    dout0_carry__2_i_3
+    dout0_carry__2_i_3__1
        (.I0(dds_output[12]),
         .I1(dds_output[13]),
-        .O(dout0_carry__2_i_3_n_0));
+        .O(dout0_carry__2_i_3__1_n_0));
   LUT2 #(
     .INIT(4'h9)) 
-    dout0_carry__2_i_4
+    dout0_carry__2_i_4__1
        (.I0(dds_output[11]),
         .I1(dds_output[12]),
-        .O(dout0_carry__2_i_4_n_0));
+        .O(dout0_carry__2_i_4__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry_i_1
+    dout0_carry_i_1__1
        (.I0(dds_output[3]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[3]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry_i_1_n_0));
+        .O(dout0_carry_i_1__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry_i_2
+    dout0_carry_i_2__1
        (.I0(dds_output[2]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[2]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry_i_2_n_0));
+        .O(dout0_carry_i_2__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry_i_3
+    dout0_carry_i_3__1
        (.I0(dds_output[1]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[1]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry_i_3_n_0));
+        .O(dout0_carry_i_3__1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    dout0_carry_i_4
+    dout0_carry_i_4__1
        (.I0(dds_output[0]),
         .I1(pos_radar[0]),
         .I2(lfsr_noise[0]),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(dout0_carry_i_4_n_0));
+        .O(dout0_carry_i_4__1_n_0));
   LUT4 #(
     .INIT(16'hFE00)) 
     \fft_s_data_tdata[31]_i_1 
@@ -8047,8 +7915,8 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
   LUT2 #(
     .INIT(4'h6)) 
     \lfsr_noise[0]_i_1__1 
-       (.I0(lfsr_noise[5]),
-        .I1(lfsr_noise[8]),
+       (.I0(lfsr_noise[7]),
+        .I1(lfsr_noise[10]),
         .O(\lfsr_noise[0]_i_1__1_n_0 ));
   FDPE \lfsr_noise_reg[0] 
        (.C(clk),
@@ -8056,6 +7924,12 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
         .D(\lfsr_noise[0]_i_1__1_n_0 ),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(lfsr_noise[0]));
+  FDCE \lfsr_noise_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
+        .D(lfsr_noise[9]),
+        .Q(lfsr_noise[10]));
   FDCE \lfsr_noise_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -8080,11 +7954,11 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
         .D(lfsr_noise[3]),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(lfsr_noise[4]));
-  FDCE \lfsr_noise_reg[5] 
+  FDPE \lfsr_noise_reg[5] 
        (.C(clk),
         .CE(1'b1),
-        .CLR(\lfsr_noise_reg[0]_0 ),
         .D(lfsr_noise[4]),
+        .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(lfsr_noise[5]));
   FDPE \lfsr_noise_reg[6] 
        (.C(clk),
@@ -8092,11 +7966,11 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
         .D(lfsr_noise[5]),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(lfsr_noise[6]));
-  FDPE \lfsr_noise_reg[7] 
+  FDCE \lfsr_noise_reg[7] 
        (.C(clk),
         .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
         .D(lfsr_noise[6]),
-        .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(lfsr_noise[7]));
   FDPE \lfsr_noise_reg[8] 
        (.C(clk),
@@ -8104,70 +7978,106 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_0
         .D(lfsr_noise[7]),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(lfsr_noise[8]));
+  FDCE \lfsr_noise_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
+        .D(lfsr_noise[8]),
+        .Q(lfsr_noise[9]));
 endmodule
 
 (* ORIG_REF_NAME = "dds_1" *) 
 module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_1
    (m_axis_data_tvalid,
     s_axis_data_tvalid,
-    dout_dds_1,
+    D,
     clk,
     rst_n,
     dds_phase_incr_1,
     p_1_out__0,
     p_1_out__0_0,
     pos_radar,
+    p_0_in,
     \lfsr_noise_reg[0]_0 );
   output m_axis_data_tvalid;
   output s_axis_data_tvalid;
-  output [15:0]dout_dds_1;
+  output [13:0]D;
   input clk;
   input rst_n;
   input [17:0]dds_phase_incr_1;
   input p_1_out__0;
   input p_1_out__0_0;
   input [2:0]pos_radar;
+  input [12:0]p_0_in;
   input \lfsr_noise_reg[0]_0 ;
 
+  wire [13:0]D;
   wire clk;
   wire [15:0]dds_output;
   wire [17:0]dds_phase_incr_1;
-  wire [15:0]dout_dds_1;
-  wire \fft_s_data_tdata[11]_i_10_n_0 ;
-  wire \fft_s_data_tdata[11]_i_11_n_0 ;
-  wire \fft_s_data_tdata[11]_i_7_n_0 ;
-  wire \fft_s_data_tdata[11]_i_8_n_0 ;
-  wire \fft_s_data_tdata[11]_i_9_n_0 ;
-  wire \fft_s_data_tdata[15]_i_10_n_0 ;
-  wire \fft_s_data_tdata[15]_i_7_n_0 ;
-  wire \fft_s_data_tdata[15]_i_8_n_0 ;
-  wire \fft_s_data_tdata[15]_i_9_n_0 ;
-  wire \fft_s_data_tdata[3]_i_10_n_0 ;
-  wire \fft_s_data_tdata[3]_i_7_n_0 ;
-  wire \fft_s_data_tdata[3]_i_8_n_0 ;
-  wire \fft_s_data_tdata[3]_i_9_n_0 ;
-  wire \fft_s_data_tdata[7]_i_10_n_0 ;
-  wire \fft_s_data_tdata[7]_i_7_n_0 ;
-  wire \fft_s_data_tdata[7]_i_8_n_0 ;
-  wire \fft_s_data_tdata[7]_i_9_n_0 ;
-  wire \fft_s_data_tdata_reg[11]_i_2_n_0 ;
-  wire \fft_s_data_tdata_reg[11]_i_2_n_1 ;
-  wire \fft_s_data_tdata_reg[11]_i_2_n_2 ;
-  wire \fft_s_data_tdata_reg[11]_i_2_n_3 ;
-  wire \fft_s_data_tdata_reg[15]_i_2_n_1 ;
-  wire \fft_s_data_tdata_reg[15]_i_2_n_2 ;
-  wire \fft_s_data_tdata_reg[15]_i_2_n_3 ;
-  wire \fft_s_data_tdata_reg[3]_i_2_n_0 ;
-  wire \fft_s_data_tdata_reg[3]_i_2_n_1 ;
-  wire \fft_s_data_tdata_reg[3]_i_2_n_2 ;
-  wire \fft_s_data_tdata_reg[3]_i_2_n_3 ;
-  wire \fft_s_data_tdata_reg[7]_i_2_n_0 ;
-  wire \fft_s_data_tdata_reg[7]_i_2_n_1 ;
-  wire \fft_s_data_tdata_reg[7]_i_2_n_2 ;
-  wire \fft_s_data_tdata_reg[7]_i_2_n_3 ;
+  wire dout0_carry__0_i_1__0_n_0;
+  wire dout0_carry__0_i_2__0_n_0;
+  wire dout0_carry__0_i_3__0_n_0;
+  wire dout0_carry__0_i_4__0_n_0;
+  wire dout0_carry__0_n_0;
+  wire dout0_carry__0_n_1;
+  wire dout0_carry__0_n_2;
+  wire dout0_carry__0_n_3;
+  wire dout0_carry__1_i_1__0_n_0;
+  wire dout0_carry__1_i_2__0_n_0;
+  wire dout0_carry__1_i_3__0_n_0;
+  wire dout0_carry__1_i_4__0_n_0;
+  wire dout0_carry__1_i_5__0_n_0;
+  wire dout0_carry__1_n_0;
+  wire dout0_carry__1_n_1;
+  wire dout0_carry__1_n_2;
+  wire dout0_carry__1_n_3;
+  wire dout0_carry__2_i_1__0_n_0;
+  wire dout0_carry__2_i_2__0_n_0;
+  wire dout0_carry__2_i_3__0_n_0;
+  wire dout0_carry__2_i_4__0_n_0;
+  wire dout0_carry__2_n_1;
+  wire dout0_carry__2_n_2;
+  wire dout0_carry__2_n_3;
+  wire dout0_carry_i_1__0_n_0;
+  wire dout0_carry_i_2__0_n_0;
+  wire dout0_carry_i_3__0_n_0;
+  wire dout0_carry_i_4__0_n_0;
+  wire dout0_carry_n_0;
+  wire dout0_carry_n_1;
+  wire dout0_carry_n_2;
+  wire dout0_carry_n_3;
+  wire \fft_s_data_tdata[11]_i_2_n_0 ;
+  wire \fft_s_data_tdata[11]_i_3_n_0 ;
+  wire \fft_s_data_tdata[11]_i_4_n_0 ;
+  wire \fft_s_data_tdata[11]_i_5_n_0 ;
+  wire \fft_s_data_tdata[15]_i_2_n_0 ;
+  wire \fft_s_data_tdata[15]_i_3_n_0 ;
+  wire \fft_s_data_tdata[3]_i_2_n_0 ;
+  wire \fft_s_data_tdata[3]_i_3_n_0 ;
+  wire \fft_s_data_tdata[3]_i_4_n_0 ;
+  wire \fft_s_data_tdata[3]_i_5_n_0 ;
+  wire \fft_s_data_tdata[7]_i_2_n_0 ;
+  wire \fft_s_data_tdata[7]_i_3_n_0 ;
+  wire \fft_s_data_tdata[7]_i_4_n_0 ;
+  wire \fft_s_data_tdata[7]_i_5_n_0 ;
+  wire \fft_s_data_tdata_reg[11]_i_1_n_0 ;
+  wire \fft_s_data_tdata_reg[11]_i_1_n_1 ;
+  wire \fft_s_data_tdata_reg[11]_i_1_n_2 ;
+  wire \fft_s_data_tdata_reg[11]_i_1_n_3 ;
+  wire \fft_s_data_tdata_reg[15]_i_1_n_3 ;
+  wire \fft_s_data_tdata_reg[3]_i_1_n_0 ;
+  wire \fft_s_data_tdata_reg[3]_i_1_n_1 ;
+  wire \fft_s_data_tdata_reg[3]_i_1_n_2 ;
+  wire \fft_s_data_tdata_reg[3]_i_1_n_3 ;
+  wire \fft_s_data_tdata_reg[7]_i_1_n_0 ;
+  wire \fft_s_data_tdata_reg[7]_i_1_n_1 ;
+  wire \fft_s_data_tdata_reg[7]_i_1_n_2 ;
+  wire \fft_s_data_tdata_reg[7]_i_1_n_3 ;
   wire \lfsr_noise[0]_i_1__0_n_0 ;
   wire \lfsr_noise_reg[0]_0 ;
   wire \lfsr_noise_reg_n_0_[0] ;
+  wire \lfsr_noise_reg_n_0_[10] ;
   wire \lfsr_noise_reg_n_0_[1] ;
   wire \lfsr_noise_reg_n_0_[2] ;
   wire \lfsr_noise_reg_n_0_[3] ;
@@ -8176,180 +8086,303 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_1
   wire \lfsr_noise_reg_n_0_[6] ;
   wire \lfsr_noise_reg_n_0_[7] ;
   wire \lfsr_noise_reg_n_0_[8] ;
+  wire \lfsr_noise_reg_n_0_[9] ;
   wire m_axis_data_tvalid;
+  wire [12:0]p_0_in;
+  wire [12:0]p_1_in;
   wire p_1_out__0;
   wire p_1_out__0_0;
   wire [2:0]pos_radar;
   wire rst_n;
   wire s_axis_data_tvalid;
-  wire [3:3]\NLW_fft_s_data_tdata_reg[15]_i_2_CO_UNCONNECTED ;
+  wire [2:0]NLW_dout0_carry_O_UNCONNECTED;
+  wire [3:3]NLW_dout0_carry__2_CO_UNCONNECTED;
+  wire [3:1]\NLW_fft_s_data_tdata_reg[15]_i_1_CO_UNCONNECTED ;
+  wire [3:2]\NLW_fft_s_data_tdata_reg[15]_i_1_O_UNCONNECTED ;
 
-  LUT5 #(
-    .INIT(32'hFFF70008)) 
-    \fft_s_data_tdata[11]_i_10 
-       (.I0(pos_radar[0]),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .I4(dds_output[9]),
-        .O(\fft_s_data_tdata[11]_i_10_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFF70008)) 
-    \fft_s_data_tdata[11]_i_11 
-       (.I0(pos_radar[0]),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .I4(dds_output[8]),
-        .O(\fft_s_data_tdata[11]_i_11_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFF7)) 
-    \fft_s_data_tdata[11]_i_7 
-       (.I0(pos_radar[0]),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .O(\fft_s_data_tdata[11]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[11]_i_8 
-       (.I0(dds_output[10]),
-        .I1(dds_output[11]),
-        .O(\fft_s_data_tdata[11]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[11]_i_9 
-       (.I0(dds_output[9]),
-        .I1(dds_output[10]),
-        .O(\fft_s_data_tdata[11]_i_9_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_10 
-       (.I0(dds_output[11]),
-        .I1(dds_output[12]),
-        .O(\fft_s_data_tdata[15]_i_10_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_7 
-       (.I0(dds_output[14]),
-        .I1(dds_output[15]),
-        .O(\fft_s_data_tdata[15]_i_7_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_8 
-       (.I0(dds_output[13]),
-        .I1(dds_output[14]),
-        .O(\fft_s_data_tdata[15]_i_8_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_9 
-       (.I0(dds_output[12]),
-        .I1(dds_output[13]),
-        .O(\fft_s_data_tdata[15]_i_9_n_0 ));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 dout0_carry
+       (.CI(1'b0),
+        .CO({dout0_carry_n_0,dout0_carry_n_1,dout0_carry_n_2,dout0_carry_n_3}),
+        .CYINIT(1'b0),
+        .DI(dds_output[3:0]),
+        .O({p_1_in[0],NLW_dout0_carry_O_UNCONNECTED[2:0]}),
+        .S({dout0_carry_i_1__0_n_0,dout0_carry_i_2__0_n_0,dout0_carry_i_3__0_n_0,dout0_carry_i_4__0_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 dout0_carry__0
+       (.CI(dout0_carry_n_0),
+        .CO({dout0_carry__0_n_0,dout0_carry__0_n_1,dout0_carry__0_n_2,dout0_carry__0_n_3}),
+        .CYINIT(1'b0),
+        .DI(dds_output[7:4]),
+        .O(p_1_in[4:1]),
+        .S({dout0_carry__0_i_1__0_n_0,dout0_carry__0_i_2__0_n_0,dout0_carry__0_i_3__0_n_0,dout0_carry__0_i_4__0_n_0}));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_10 
-       (.I0(dds_output[0]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[0] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_10_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_7 
-       (.I0(dds_output[3]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[3] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_7_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_8 
-       (.I0(dds_output[2]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[2] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_8_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_9 
-       (.I0(dds_output[1]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[1] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_9_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_10 
-       (.I0(dds_output[4]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[4] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_10_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_7 
+    dout0_carry__0_i_1__0
        (.I0(dds_output[7]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[7] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_7_n_0 ));
+        .O(dout0_carry__0_i_1__0_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_8 
+    dout0_carry__0_i_2__0
        (.I0(dds_output[6]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[6] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_8_n_0 ));
+        .O(dout0_carry__0_i_2__0_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_9 
+    dout0_carry__0_i_3__0
        (.I0(dds_output[5]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[5] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_9_n_0 ));
+        .O(dout0_carry__0_i_3__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__0_i_4__0
+       (.I0(dds_output[4]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[4] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__0_i_4__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[11]_i_2 
-       (.CI(\fft_s_data_tdata_reg[7]_i_2_n_0 ),
-        .CO({\fft_s_data_tdata_reg[11]_i_2_n_0 ,\fft_s_data_tdata_reg[11]_i_2_n_1 ,\fft_s_data_tdata_reg[11]_i_2_n_2 ,\fft_s_data_tdata_reg[11]_i_2_n_3 }),
+  CARRY4 dout0_carry__1
+       (.CI(dout0_carry__0_n_0),
+        .CO({dout0_carry__1_n_0,dout0_carry__1_n_1,dout0_carry__1_n_2,dout0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({dds_output[10:9],\fft_s_data_tdata[11]_i_7_n_0 ,dds_output[8]}),
-        .O(dout_dds_1[11:8]),
-        .S({\fft_s_data_tdata[11]_i_8_n_0 ,\fft_s_data_tdata[11]_i_9_n_0 ,\fft_s_data_tdata[11]_i_10_n_0 ,\fft_s_data_tdata[11]_i_11_n_0 }));
+        .DI({dout0_carry__1_i_1__0_n_0,dds_output[10:8]}),
+        .O(p_1_in[8:5]),
+        .S({dout0_carry__1_i_2__0_n_0,dout0_carry__1_i_3__0_n_0,dout0_carry__1_i_4__0_n_0,dout0_carry__1_i_5__0_n_0}));
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    dout0_carry__1_i_1__0
+       (.I0(pos_radar[0]),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .O(dout0_carry__1_i_1__0_n_0));
+  LUT5 #(
+    .INIT(32'hFFF70008)) 
+    dout0_carry__1_i_2__0
+       (.I0(pos_radar[0]),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .I4(dds_output[11]),
+        .O(dout0_carry__1_i_2__0_n_0));
+  LUT5 #(
+    .INIT(32'hFFF70008)) 
+    dout0_carry__1_i_3__0
+       (.I0(pos_radar[0]),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .I4(dds_output[10]),
+        .O(dout0_carry__1_i_3__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__1_i_4__0
+       (.I0(dds_output[9]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[9] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__1_i_4__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__1_i_5__0
+       (.I0(dds_output[8]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[8] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__1_i_5__0_n_0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[15]_i_2 
-       (.CI(\fft_s_data_tdata_reg[11]_i_2_n_0 ),
-        .CO({\NLW_fft_s_data_tdata_reg[15]_i_2_CO_UNCONNECTED [3],\fft_s_data_tdata_reg[15]_i_2_n_1 ,\fft_s_data_tdata_reg[15]_i_2_n_2 ,\fft_s_data_tdata_reg[15]_i_2_n_3 }),
+  CARRY4 dout0_carry__2
+       (.CI(dout0_carry__1_n_0),
+        .CO({NLW_dout0_carry__2_CO_UNCONNECTED[3],dout0_carry__2_n_1,dout0_carry__2_n_2,dout0_carry__2_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,dds_output[13:11]}),
-        .O(dout_dds_1[15:12]),
-        .S({\fft_s_data_tdata[15]_i_7_n_0 ,\fft_s_data_tdata[15]_i_8_n_0 ,\fft_s_data_tdata[15]_i_9_n_0 ,\fft_s_data_tdata[15]_i_10_n_0 }));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[3]_i_2 
+        .O(p_1_in[12:9]),
+        .S({dout0_carry__2_i_1__0_n_0,dout0_carry__2_i_2__0_n_0,dout0_carry__2_i_3__0_n_0,dout0_carry__2_i_4__0_n_0}));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_1__0
+       (.I0(dds_output[14]),
+        .I1(dds_output[15]),
+        .O(dout0_carry__2_i_1__0_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_2__0
+       (.I0(dds_output[13]),
+        .I1(dds_output[14]),
+        .O(dout0_carry__2_i_2__0_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_3__0
+       (.I0(dds_output[12]),
+        .I1(dds_output[13]),
+        .O(dout0_carry__2_i_3__0_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_4__0
+       (.I0(dds_output[11]),
+        .I1(dds_output[12]),
+        .O(dout0_carry__2_i_4__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_1__0
+       (.I0(dds_output[3]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[3] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_1__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_2__0
+       (.I0(dds_output[2]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[2] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_2__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_3__0
+       (.I0(dds_output[1]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[1] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_3__0_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_4__0
+       (.I0(dds_output[0]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[0] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_4__0_n_0));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[11]_i_2 
+       (.I0(p_1_in[11]),
+        .I1(p_0_in[11]),
+        .O(\fft_s_data_tdata[11]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[11]_i_3 
+       (.I0(p_1_in[10]),
+        .I1(p_0_in[10]),
+        .O(\fft_s_data_tdata[11]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[11]_i_4 
+       (.I0(p_1_in[9]),
+        .I1(p_0_in[9]),
+        .O(\fft_s_data_tdata[11]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[11]_i_5 
+       (.I0(p_1_in[8]),
+        .I1(p_0_in[8]),
+        .O(\fft_s_data_tdata[11]_i_5_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \fft_s_data_tdata[15]_i_2 
+       (.I0(p_1_in[12]),
+        .O(\fft_s_data_tdata[15]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[15]_i_3 
+       (.I0(p_1_in[12]),
+        .I1(p_0_in[12]),
+        .O(\fft_s_data_tdata[15]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[3]_i_2 
+       (.I0(p_1_in[3]),
+        .I1(p_0_in[3]),
+        .O(\fft_s_data_tdata[3]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[3]_i_3 
+       (.I0(p_1_in[2]),
+        .I1(p_0_in[2]),
+        .O(\fft_s_data_tdata[3]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[3]_i_4 
+       (.I0(p_1_in[1]),
+        .I1(p_0_in[1]),
+        .O(\fft_s_data_tdata[3]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[3]_i_5 
+       (.I0(p_1_in[0]),
+        .I1(p_0_in[0]),
+        .O(\fft_s_data_tdata[3]_i_5_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[7]_i_2 
+       (.I0(p_1_in[7]),
+        .I1(p_0_in[7]),
+        .O(\fft_s_data_tdata[7]_i_2_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[7]_i_3 
+       (.I0(p_1_in[6]),
+        .I1(p_0_in[6]),
+        .O(\fft_s_data_tdata[7]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[7]_i_4 
+       (.I0(p_1_in[5]),
+        .I1(p_0_in[5]),
+        .O(\fft_s_data_tdata[7]_i_4_n_0 ));
+  LUT2 #(
+    .INIT(4'h6)) 
+    \fft_s_data_tdata[7]_i_5 
+       (.I0(p_1_in[4]),
+        .I1(p_0_in[4]),
+        .O(\fft_s_data_tdata[7]_i_5_n_0 ));
+  CARRY4 \fft_s_data_tdata_reg[11]_i_1 
+       (.CI(\fft_s_data_tdata_reg[7]_i_1_n_0 ),
+        .CO({\fft_s_data_tdata_reg[11]_i_1_n_0 ,\fft_s_data_tdata_reg[11]_i_1_n_1 ,\fft_s_data_tdata_reg[11]_i_1_n_2 ,\fft_s_data_tdata_reg[11]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI(p_1_in[11:8]),
+        .O(D[11:8]),
+        .S({\fft_s_data_tdata[11]_i_2_n_0 ,\fft_s_data_tdata[11]_i_3_n_0 ,\fft_s_data_tdata[11]_i_4_n_0 ,\fft_s_data_tdata[11]_i_5_n_0 }));
+  CARRY4 \fft_s_data_tdata_reg[15]_i_1 
+       (.CI(\fft_s_data_tdata_reg[11]_i_1_n_0 ),
+        .CO({\NLW_fft_s_data_tdata_reg[15]_i_1_CO_UNCONNECTED [3:1],\fft_s_data_tdata_reg[15]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,\fft_s_data_tdata[15]_i_2_n_0 }),
+        .O({\NLW_fft_s_data_tdata_reg[15]_i_1_O_UNCONNECTED [3:2],D[13:12]}),
+        .S({1'b0,1'b0,1'b1,\fft_s_data_tdata[15]_i_3_n_0 }));
+  CARRY4 \fft_s_data_tdata_reg[3]_i_1 
        (.CI(1'b0),
-        .CO({\fft_s_data_tdata_reg[3]_i_2_n_0 ,\fft_s_data_tdata_reg[3]_i_2_n_1 ,\fft_s_data_tdata_reg[3]_i_2_n_2 ,\fft_s_data_tdata_reg[3]_i_2_n_3 }),
+        .CO({\fft_s_data_tdata_reg[3]_i_1_n_0 ,\fft_s_data_tdata_reg[3]_i_1_n_1 ,\fft_s_data_tdata_reg[3]_i_1_n_2 ,\fft_s_data_tdata_reg[3]_i_1_n_3 }),
         .CYINIT(1'b0),
-        .DI(dds_output[3:0]),
-        .O(dout_dds_1[3:0]),
-        .S({\fft_s_data_tdata[3]_i_7_n_0 ,\fft_s_data_tdata[3]_i_8_n_0 ,\fft_s_data_tdata[3]_i_9_n_0 ,\fft_s_data_tdata[3]_i_10_n_0 }));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[7]_i_2 
-       (.CI(\fft_s_data_tdata_reg[3]_i_2_n_0 ),
-        .CO({\fft_s_data_tdata_reg[7]_i_2_n_0 ,\fft_s_data_tdata_reg[7]_i_2_n_1 ,\fft_s_data_tdata_reg[7]_i_2_n_2 ,\fft_s_data_tdata_reg[7]_i_2_n_3 }),
+        .DI(p_1_in[3:0]),
+        .O(D[3:0]),
+        .S({\fft_s_data_tdata[3]_i_2_n_0 ,\fft_s_data_tdata[3]_i_3_n_0 ,\fft_s_data_tdata[3]_i_4_n_0 ,\fft_s_data_tdata[3]_i_5_n_0 }));
+  CARRY4 \fft_s_data_tdata_reg[7]_i_1 
+       (.CI(\fft_s_data_tdata_reg[3]_i_1_n_0 ),
+        .CO({\fft_s_data_tdata_reg[7]_i_1_n_0 ,\fft_s_data_tdata_reg[7]_i_1_n_1 ,\fft_s_data_tdata_reg[7]_i_1_n_2 ,\fft_s_data_tdata_reg[7]_i_1_n_3 }),
         .CYINIT(1'b0),
-        .DI(dds_output[7:4]),
-        .O(dout_dds_1[7:4]),
-        .S({\fft_s_data_tdata[7]_i_7_n_0 ,\fft_s_data_tdata[7]_i_8_n_0 ,\fft_s_data_tdata[7]_i_9_n_0 ,\fft_s_data_tdata[7]_i_10_n_0 }));
+        .DI(p_1_in[7:4]),
+        .O(D[7:4]),
+        .S({\fft_s_data_tdata[7]_i_2_n_0 ,\fft_s_data_tdata[7]_i_3_n_0 ,\fft_s_data_tdata[7]_i_4_n_0 ,\fft_s_data_tdata[7]_i_5_n_0 }));
   (* x_core_info = "dds_compiler_v6_0_22,Vivado 2022.2" *) 
   DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_compiler_1 inst_dds_1
        (.aclk(clk),
@@ -8361,8 +8394,8 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_1
   LUT2 #(
     .INIT(4'h6)) 
     \lfsr_noise[0]_i_1__0 
-       (.I0(\lfsr_noise_reg_n_0_[0] ),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
+       (.I0(\lfsr_noise_reg_n_0_[4] ),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
         .O(\lfsr_noise[0]_i_1__0_n_0 ));
   FDPE \lfsr_noise_reg[0] 
        (.C(clk),
@@ -8370,6 +8403,12 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_1
         .D(\lfsr_noise[0]_i_1__0_n_0 ),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[0] ));
+  FDPE \lfsr_noise_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\lfsr_noise_reg_n_0_[9] ),
+        .PRE(\lfsr_noise_reg[0]_0 ),
+        .Q(\lfsr_noise_reg_n_0_[10] ));
   FDPE \lfsr_noise_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -8418,6 +8457,12 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_1
         .D(\lfsr_noise_reg_n_0_[7] ),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[8] ));
+  FDCE \lfsr_noise_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
+        .D(\lfsr_noise_reg_n_0_[8] ),
+        .Q(\lfsr_noise_reg_n_0_[9] ));
   LUT3 #(
     .INIT(8'hFE)) 
     u_fft_i_1
@@ -8430,14 +8475,14 @@ endmodule
 (* ORIG_REF_NAME = "dds_2" *) 
 module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
    (m_axis_data_tvalid,
-    dout_dds_2,
+    p_0_in,
     clk,
     rst_n,
     dds_phase_incr_2,
     pos_radar,
     \lfsr_noise_reg[0]_0 );
   output m_axis_data_tvalid;
-  output [15:0]dout_dds_2;
+  output [12:0]p_0_in;
   input clk;
   input rst_n;
   input [17:0]dds_phase_incr_2;
@@ -8447,42 +8492,42 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
   wire clk;
   wire [15:0]dds_output;
   wire [17:0]dds_phase_incr_2;
-  wire [15:0]dout_dds_2;
-  wire \fft_s_data_tdata[11]_i_13_n_0 ;
-  wire \fft_s_data_tdata[11]_i_14_n_0 ;
-  wire \fft_s_data_tdata[11]_i_15_n_0 ;
-  wire \fft_s_data_tdata[11]_i_16_n_0 ;
-  wire \fft_s_data_tdata[11]_i_17_n_0 ;
-  wire \fft_s_data_tdata[15]_i_12_n_0 ;
-  wire \fft_s_data_tdata[15]_i_13_n_0 ;
-  wire \fft_s_data_tdata[15]_i_14_n_0 ;
-  wire \fft_s_data_tdata[15]_i_15_n_0 ;
-  wire \fft_s_data_tdata[3]_i_12_n_0 ;
-  wire \fft_s_data_tdata[3]_i_13_n_0 ;
-  wire \fft_s_data_tdata[3]_i_14_n_0 ;
-  wire \fft_s_data_tdata[3]_i_15_n_0 ;
-  wire \fft_s_data_tdata[7]_i_12_n_0 ;
-  wire \fft_s_data_tdata[7]_i_13_n_0 ;
-  wire \fft_s_data_tdata[7]_i_14_n_0 ;
-  wire \fft_s_data_tdata[7]_i_15_n_0 ;
-  wire \fft_s_data_tdata_reg[11]_i_12_n_0 ;
-  wire \fft_s_data_tdata_reg[11]_i_12_n_1 ;
-  wire \fft_s_data_tdata_reg[11]_i_12_n_2 ;
-  wire \fft_s_data_tdata_reg[11]_i_12_n_3 ;
-  wire \fft_s_data_tdata_reg[15]_i_11_n_1 ;
-  wire \fft_s_data_tdata_reg[15]_i_11_n_2 ;
-  wire \fft_s_data_tdata_reg[15]_i_11_n_3 ;
-  wire \fft_s_data_tdata_reg[3]_i_11_n_0 ;
-  wire \fft_s_data_tdata_reg[3]_i_11_n_1 ;
-  wire \fft_s_data_tdata_reg[3]_i_11_n_2 ;
-  wire \fft_s_data_tdata_reg[3]_i_11_n_3 ;
-  wire \fft_s_data_tdata_reg[7]_i_11_n_0 ;
-  wire \fft_s_data_tdata_reg[7]_i_11_n_1 ;
-  wire \fft_s_data_tdata_reg[7]_i_11_n_2 ;
-  wire \fft_s_data_tdata_reg[7]_i_11_n_3 ;
+  wire dout0_carry__0_i_1_n_0;
+  wire dout0_carry__0_i_2_n_0;
+  wire dout0_carry__0_i_3_n_0;
+  wire dout0_carry__0_i_4_n_0;
+  wire dout0_carry__0_n_0;
+  wire dout0_carry__0_n_1;
+  wire dout0_carry__0_n_2;
+  wire dout0_carry__0_n_3;
+  wire dout0_carry__1_i_1_n_0;
+  wire dout0_carry__1_i_2_n_0;
+  wire dout0_carry__1_i_3_n_0;
+  wire dout0_carry__1_i_4_n_0;
+  wire dout0_carry__1_i_5_n_0;
+  wire dout0_carry__1_n_0;
+  wire dout0_carry__1_n_1;
+  wire dout0_carry__1_n_2;
+  wire dout0_carry__1_n_3;
+  wire dout0_carry__2_i_1_n_0;
+  wire dout0_carry__2_i_2_n_0;
+  wire dout0_carry__2_i_3_n_0;
+  wire dout0_carry__2_i_4_n_0;
+  wire dout0_carry__2_n_1;
+  wire dout0_carry__2_n_2;
+  wire dout0_carry__2_n_3;
+  wire dout0_carry_i_1_n_0;
+  wire dout0_carry_i_2_n_0;
+  wire dout0_carry_i_3_n_0;
+  wire dout0_carry_i_4_n_0;
+  wire dout0_carry_n_0;
+  wire dout0_carry_n_1;
+  wire dout0_carry_n_2;
+  wire dout0_carry_n_3;
   wire \lfsr_noise[0]_i_1_n_0 ;
   wire \lfsr_noise_reg[0]_0 ;
   wire \lfsr_noise_reg_n_0_[0] ;
+  wire \lfsr_noise_reg_n_0_[10] ;
   wire \lfsr_noise_reg_n_0_[1] ;
   wire \lfsr_noise_reg_n_0_[2] ;
   wire \lfsr_noise_reg_n_0_[3] ;
@@ -8491,177 +8536,186 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
   wire \lfsr_noise_reg_n_0_[6] ;
   wire \lfsr_noise_reg_n_0_[7] ;
   wire \lfsr_noise_reg_n_0_[8] ;
+  wire \lfsr_noise_reg_n_0_[9] ;
   wire m_axis_data_tvalid;
+  wire [12:0]p_0_in;
   wire [2:0]pos_radar;
   wire rst_n;
-  wire [3:3]\NLW_fft_s_data_tdata_reg[15]_i_11_CO_UNCONNECTED ;
+  wire [2:0]NLW_dout0_carry_O_UNCONNECTED;
+  wire [3:3]NLW_dout0_carry__2_CO_UNCONNECTED;
 
-  LUT4 #(
-    .INIT(16'hFFF7)) 
-    \fft_s_data_tdata[11]_i_13 
-       (.I0(pos_radar[0]),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .O(\fft_s_data_tdata[11]_i_13_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[11]_i_14 
-       (.I0(dds_output[10]),
-        .I1(dds_output[11]),
-        .O(\fft_s_data_tdata[11]_i_14_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[11]_i_15 
-       (.I0(dds_output[9]),
-        .I1(dds_output[10]),
-        .O(\fft_s_data_tdata[11]_i_15_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFF70008)) 
-    \fft_s_data_tdata[11]_i_16 
-       (.I0(pos_radar[0]),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .I4(dds_output[9]),
-        .O(\fft_s_data_tdata[11]_i_16_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFF70008)) 
-    \fft_s_data_tdata[11]_i_17 
-       (.I0(pos_radar[0]),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
-        .I2(pos_radar[1]),
-        .I3(pos_radar[2]),
-        .I4(dds_output[8]),
-        .O(\fft_s_data_tdata[11]_i_17_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_12 
-       (.I0(dds_output[14]),
-        .I1(dds_output[15]),
-        .O(\fft_s_data_tdata[15]_i_12_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_13 
-       (.I0(dds_output[13]),
-        .I1(dds_output[14]),
-        .O(\fft_s_data_tdata[15]_i_13_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_14 
-       (.I0(dds_output[12]),
-        .I1(dds_output[13]),
-        .O(\fft_s_data_tdata[15]_i_14_n_0 ));
-  LUT2 #(
-    .INIT(4'h9)) 
-    \fft_s_data_tdata[15]_i_15 
-       (.I0(dds_output[11]),
-        .I1(dds_output[12]),
-        .O(\fft_s_data_tdata[15]_i_15_n_0 ));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 dout0_carry
+       (.CI(1'b0),
+        .CO({dout0_carry_n_0,dout0_carry_n_1,dout0_carry_n_2,dout0_carry_n_3}),
+        .CYINIT(1'b0),
+        .DI(dds_output[3:0]),
+        .O({p_0_in[0],NLW_dout0_carry_O_UNCONNECTED[2:0]}),
+        .S({dout0_carry_i_1_n_0,dout0_carry_i_2_n_0,dout0_carry_i_3_n_0,dout0_carry_i_4_n_0}));
+  (* ADDER_THRESHOLD = "35" *) 
+  CARRY4 dout0_carry__0
+       (.CI(dout0_carry_n_0),
+        .CO({dout0_carry__0_n_0,dout0_carry__0_n_1,dout0_carry__0_n_2,dout0_carry__0_n_3}),
+        .CYINIT(1'b0),
+        .DI(dds_output[7:4]),
+        .O(p_0_in[4:1]),
+        .S({dout0_carry__0_i_1_n_0,dout0_carry__0_i_2_n_0,dout0_carry__0_i_3_n_0,dout0_carry__0_i_4_n_0}));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_12 
-       (.I0(dds_output[3]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[3] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_12_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_13 
-       (.I0(dds_output[2]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[2] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_13_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_14 
-       (.I0(dds_output[1]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[1] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_14_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[3]_i_15 
-       (.I0(dds_output[0]),
-        .I1(pos_radar[0]),
-        .I2(\lfsr_noise_reg_n_0_[0] ),
-        .I3(pos_radar[1]),
-        .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[3]_i_15_n_0 ));
-  LUT5 #(
-    .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_12 
+    dout0_carry__0_i_1
        (.I0(dds_output[7]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[7] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_12_n_0 ));
+        .O(dout0_carry__0_i_1_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_13 
+    dout0_carry__0_i_2
        (.I0(dds_output[6]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[6] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_13_n_0 ));
+        .O(dout0_carry__0_i_2_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_14 
+    dout0_carry__0_i_3
        (.I0(dds_output[5]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[5] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_14_n_0 ));
+        .O(dout0_carry__0_i_3_n_0));
   LUT5 #(
     .INIT(32'hAAAAAA6A)) 
-    \fft_s_data_tdata[7]_i_15 
+    dout0_carry__0_i_4
        (.I0(dds_output[4]),
         .I1(pos_radar[0]),
         .I2(\lfsr_noise_reg_n_0_[4] ),
         .I3(pos_radar[1]),
         .I4(pos_radar[2]),
-        .O(\fft_s_data_tdata[7]_i_15_n_0 ));
+        .O(dout0_carry__0_i_4_n_0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[11]_i_12 
-       (.CI(\fft_s_data_tdata_reg[7]_i_11_n_0 ),
-        .CO({\fft_s_data_tdata_reg[11]_i_12_n_0 ,\fft_s_data_tdata_reg[11]_i_12_n_1 ,\fft_s_data_tdata_reg[11]_i_12_n_2 ,\fft_s_data_tdata_reg[11]_i_12_n_3 }),
+  CARRY4 dout0_carry__1
+       (.CI(dout0_carry__0_n_0),
+        .CO({dout0_carry__1_n_0,dout0_carry__1_n_1,dout0_carry__1_n_2,dout0_carry__1_n_3}),
         .CYINIT(1'b0),
-        .DI({dds_output[10:9],\fft_s_data_tdata[11]_i_13_n_0 ,dds_output[8]}),
-        .O(dout_dds_2[11:8]),
-        .S({\fft_s_data_tdata[11]_i_14_n_0 ,\fft_s_data_tdata[11]_i_15_n_0 ,\fft_s_data_tdata[11]_i_16_n_0 ,\fft_s_data_tdata[11]_i_17_n_0 }));
+        .DI({dout0_carry__1_i_1_n_0,dds_output[10:8]}),
+        .O(p_0_in[8:5]),
+        .S({dout0_carry__1_i_2_n_0,dout0_carry__1_i_3_n_0,dout0_carry__1_i_4_n_0,dout0_carry__1_i_5_n_0}));
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    dout0_carry__1_i_1
+       (.I0(pos_radar[0]),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .O(dout0_carry__1_i_1_n_0));
+  LUT5 #(
+    .INIT(32'hFFF70008)) 
+    dout0_carry__1_i_2
+       (.I0(pos_radar[0]),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .I4(dds_output[11]),
+        .O(dout0_carry__1_i_2_n_0));
+  LUT5 #(
+    .INIT(32'hFFF70008)) 
+    dout0_carry__1_i_3
+       (.I0(pos_radar[0]),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
+        .I2(pos_radar[1]),
+        .I3(pos_radar[2]),
+        .I4(dds_output[10]),
+        .O(dout0_carry__1_i_3_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__1_i_4
+       (.I0(dds_output[9]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[9] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__1_i_4_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry__1_i_5
+       (.I0(dds_output[8]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[8] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry__1_i_5_n_0));
   (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[15]_i_11 
-       (.CI(\fft_s_data_tdata_reg[11]_i_12_n_0 ),
-        .CO({\NLW_fft_s_data_tdata_reg[15]_i_11_CO_UNCONNECTED [3],\fft_s_data_tdata_reg[15]_i_11_n_1 ,\fft_s_data_tdata_reg[15]_i_11_n_2 ,\fft_s_data_tdata_reg[15]_i_11_n_3 }),
+  CARRY4 dout0_carry__2
+       (.CI(dout0_carry__1_n_0),
+        .CO({NLW_dout0_carry__2_CO_UNCONNECTED[3],dout0_carry__2_n_1,dout0_carry__2_n_2,dout0_carry__2_n_3}),
         .CYINIT(1'b0),
         .DI({1'b0,dds_output[13:11]}),
-        .O(dout_dds_2[15:12]),
-        .S({\fft_s_data_tdata[15]_i_12_n_0 ,\fft_s_data_tdata[15]_i_13_n_0 ,\fft_s_data_tdata[15]_i_14_n_0 ,\fft_s_data_tdata[15]_i_15_n_0 }));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[3]_i_11 
-       (.CI(1'b0),
-        .CO({\fft_s_data_tdata_reg[3]_i_11_n_0 ,\fft_s_data_tdata_reg[3]_i_11_n_1 ,\fft_s_data_tdata_reg[3]_i_11_n_2 ,\fft_s_data_tdata_reg[3]_i_11_n_3 }),
-        .CYINIT(1'b0),
-        .DI(dds_output[3:0]),
-        .O(dout_dds_2[3:0]),
-        .S({\fft_s_data_tdata[3]_i_12_n_0 ,\fft_s_data_tdata[3]_i_13_n_0 ,\fft_s_data_tdata[3]_i_14_n_0 ,\fft_s_data_tdata[3]_i_15_n_0 }));
-  (* ADDER_THRESHOLD = "35" *) 
-  CARRY4 \fft_s_data_tdata_reg[7]_i_11 
-       (.CI(\fft_s_data_tdata_reg[3]_i_11_n_0 ),
-        .CO({\fft_s_data_tdata_reg[7]_i_11_n_0 ,\fft_s_data_tdata_reg[7]_i_11_n_1 ,\fft_s_data_tdata_reg[7]_i_11_n_2 ,\fft_s_data_tdata_reg[7]_i_11_n_3 }),
-        .CYINIT(1'b0),
-        .DI(dds_output[7:4]),
-        .O(dout_dds_2[7:4]),
-        .S({\fft_s_data_tdata[7]_i_12_n_0 ,\fft_s_data_tdata[7]_i_13_n_0 ,\fft_s_data_tdata[7]_i_14_n_0 ,\fft_s_data_tdata[7]_i_15_n_0 }));
+        .O(p_0_in[12:9]),
+        .S({dout0_carry__2_i_1_n_0,dout0_carry__2_i_2_n_0,dout0_carry__2_i_3_n_0,dout0_carry__2_i_4_n_0}));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_1
+       (.I0(dds_output[14]),
+        .I1(dds_output[15]),
+        .O(dout0_carry__2_i_1_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_2
+       (.I0(dds_output[13]),
+        .I1(dds_output[14]),
+        .O(dout0_carry__2_i_2_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_3
+       (.I0(dds_output[12]),
+        .I1(dds_output[13]),
+        .O(dout0_carry__2_i_3_n_0));
+  LUT2 #(
+    .INIT(4'h9)) 
+    dout0_carry__2_i_4
+       (.I0(dds_output[11]),
+        .I1(dds_output[12]),
+        .O(dout0_carry__2_i_4_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_1
+       (.I0(dds_output[3]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[3] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_1_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_2
+       (.I0(dds_output[2]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[2] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_2_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_3
+       (.I0(dds_output[1]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[1] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_3_n_0));
+  LUT5 #(
+    .INIT(32'hAAAAAA6A)) 
+    dout0_carry_i_4
+       (.I0(dds_output[0]),
+        .I1(pos_radar[0]),
+        .I2(\lfsr_noise_reg_n_0_[0] ),
+        .I3(pos_radar[1]),
+        .I4(pos_radar[2]),
+        .O(dout0_carry_i_4_n_0));
   (* x_core_info = "dds_compiler_v6_0_22,Vivado 2022.2" *) 
   DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_compiler_2 inst_dds_2
        (.aclk(clk),
@@ -8674,7 +8728,7 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
     .INIT(4'h6)) 
     \lfsr_noise[0]_i_1 
        (.I0(\lfsr_noise_reg_n_0_[1] ),
-        .I1(\lfsr_noise_reg_n_0_[8] ),
+        .I1(\lfsr_noise_reg_n_0_[10] ),
         .O(\lfsr_noise[0]_i_1_n_0 ));
   FDPE \lfsr_noise_reg[0] 
        (.C(clk),
@@ -8682,6 +8736,12 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
         .D(\lfsr_noise[0]_i_1_n_0 ),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[0] ));
+  FDCE \lfsr_noise_reg[10] 
+       (.C(clk),
+        .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
+        .D(\lfsr_noise_reg_n_0_[9] ),
+        .Q(\lfsr_noise_reg_n_0_[10] ));
   FDCE \lfsr_noise_reg[1] 
        (.C(clk),
         .CE(1'b1),
@@ -8706,17 +8766,17 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
         .D(\lfsr_noise_reg_n_0_[3] ),
         .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[4] ));
-  FDPE \lfsr_noise_reg[5] 
+  FDCE \lfsr_noise_reg[5] 
        (.C(clk),
         .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
         .D(\lfsr_noise_reg_n_0_[4] ),
-        .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[5] ));
-  FDPE \lfsr_noise_reg[6] 
+  FDCE \lfsr_noise_reg[6] 
        (.C(clk),
         .CE(1'b1),
+        .CLR(\lfsr_noise_reg[0]_0 ),
         .D(\lfsr_noise_reg_n_0_[5] ),
-        .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[6] ));
   FDCE \lfsr_noise_reg[7] 
        (.C(clk),
@@ -8724,12 +8784,18 @@ module DDS_FFT_ethernet_final_DDS_FFT_0_0_dds_2
         .CLR(\lfsr_noise_reg[0]_0 ),
         .D(\lfsr_noise_reg_n_0_[6] ),
         .Q(\lfsr_noise_reg_n_0_[7] ));
-  FDCE \lfsr_noise_reg[8] 
+  FDPE \lfsr_noise_reg[8] 
        (.C(clk),
         .CE(1'b1),
-        .CLR(\lfsr_noise_reg[0]_0 ),
         .D(\lfsr_noise_reg_n_0_[7] ),
+        .PRE(\lfsr_noise_reg[0]_0 ),
         .Q(\lfsr_noise_reg_n_0_[8] ));
+  FDPE \lfsr_noise_reg[9] 
+       (.C(clk),
+        .CE(1'b1),
+        .D(\lfsr_noise_reg_n_0_[8] ),
+        .PRE(\lfsr_noise_reg[0]_0 ),
+        .Q(\lfsr_noise_reg_n_0_[9] ));
 endmodule
 
 (* ORIG_REF_NAME = "dds_compiler_0" *) (* X_CORE_INFO = "dds_compiler_v6_0_22,Vivado 2022.2" *) 
